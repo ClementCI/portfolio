@@ -2,7 +2,7 @@
 
 
 
-Welcome to my portfolio of machine learning and data science projects, developed as part of my academic coursework. Each project explores a different area of modern AI, from fundamental algorithms to deep probabilistic models and neural networks. All implementations are original and emphasize conceptual clarity, practical experimentation, and reproducibility. Among these, the [Embedded Topic Model for Document Analysis](#embedded-topic-model-for-document-analysis) and [CNN Architectures for Image Classification: From VGG to ConvNeXt](#cnn-architectures-for-image-classification-from-vgg-to-convnext) stand out as key projects, showcasing up-to-date techniques at the intersection of deep learning and representation learning.
+Welcome to my portfolio of machine learning and data science projects, developed as part of my academic coursework. Each project explores a different area of modern AI, from fundamental algorithms to deep probabilistic models and neural networks. All implementations are original and emphasize conceptual clarity, practical experimentation, and reproducibility. Among these, the [Embedded Topic Model for Document Analysis](#embedded-topic-model-for-document-analysis) and [CNN Architectures for Image Classification: From VGG to ConvNeXt](#cnn-architectures-for-image-classification-from-vgg-to-convnext) stand out as key projects, showcasing up-to-date techniques in natural language processing and computer vision.
 
 
 
