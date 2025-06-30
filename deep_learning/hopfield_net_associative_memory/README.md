@@ -39,13 +39,13 @@ Patterns were stored and recalled using both synchronous (little model) and asyn
 *Restoration rate across increasing noise levels for different recall strategies.*
 
 <p align="center">
-  <img src="figures/capacity.png" width="80%">
+  <img src="figures/capacity.png" width="50%">
 </p>
 
 *Proportion of stable patterns as a function of the number of stored patterns in a 100-unit network.*
 
 <p align="center">
-  <img src="figures/capacity_biased.png" width="80%">
+  <img src="figures/capacity_biased.png" width="50%">
 </p>
 
 *Proportion of stable **biased** patterns as a function of the number of stored patterns in a 100-unit network.*
