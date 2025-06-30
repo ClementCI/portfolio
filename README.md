@@ -32,9 +32,9 @@ Welcome to my portfolio of machine learning and data science projects, developed
 
 - [Stochastic Variational Inference for Latent Dirichlet Allocation](#stochastic-variational-inference-for-latent-dirichlet-allocation)
 
-- [Reparameterization of Common Distributions](#reparameterization-of-common-distributions)
-
 - [Variational Autoencoder (VAE) for MNIST Latent Representation and Image Generation](#variational-autoencoder-vae-for-mnist-latent-representation-and-image-generation)
+
+- [Reparameterization of Common Distributions](#reparameterization-of-common-distributions)
 
 - [Embedded Topic Model for Document Analysis](#embedded-topic-model-for-document-analysis)
 
@@ -199,6 +199,16 @@ This project implements Stochastic Variational Inference (SVI) for Latent Dirich
 
 
 
+### Variational Autoencoder (VAE) for MNIST Latent Representation and Image Generation
+
+
+
+A deep generative model is implemented to learn compressed latent representations of handwritten digits. The project compares Kullback-Leibler divergence and Maximum Mean Discrepancy as regularizers in the VAE objective. It visualizes the structure of the learned latent space and generates new digits from noise. Results show how regularization impacts the expressiveness and geometry of latent embeddings.
+
+
+
+[Go to VAE for MNIST Latent Representation and Image Generation](./probabilistic_ml/variational_autoencoders/README.md)
+
 
 ### Reparameterization of Common Distributions
 
@@ -211,22 +221,6 @@ This project focuses on enabling gradient-based optimization for models involvin
 
 
 [Go to Reparameterization of Common Distributions](./probabilistic_ml/reparameterization/README.md)
-
-
-
-
-
-### Variational Autoencoder (VAE) for MNIST Latent Representation and Image Generation
-
-
-
-A deep generative model is implemented to learn compressed latent representations of handwritten digits. The project compares Kullback-Leibler divergence and Maximum Mean Discrepancy as regularizers in the VAE objective. It visualizes the structure of the learned latent space and generates new digits from noise. Results show how regularization impacts the expressiveness and geometry of latent embeddings.
-
-
-
-[Go to VAE for MNIST Latent Representation and Image Generation](./probabilistic_ml/variational_autoencoders/README.md)
-
-
 
 
 
