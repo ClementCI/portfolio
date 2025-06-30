@@ -10,7 +10,7 @@ The implementation is based on Hinton et al.'s foundational work:
 Our experiments focus on the MNIST dataset, where we assess reconstruction quality, training stability, classification accuracy, and generative capacity. We analyze how design choices—such as hidden layer sizes, learning rates, and momentum—impact learning dynamics.
 
 <p align="center">
-  <img src="figures/scheme.png" width="90%">
+  <img src="figures/scheme.png" width="50%">
 </p>
 
 *Deep belief network architecture (source: Hinton et al.).*
@@ -32,13 +32,13 @@ Our experiments focus on the MNIST dataset, where we assess reconstruction quali
 ### RBM for recognizing MNIST digits
 
 <p align="center">
-  <img src="figures/loss_rbm.png" width="90%">
+  <img src="figures/loss_rbm.png" width="50%">
 </p>
 
 *Reconstruction loss during training for RBMs with various hidden sizes.*
 
 <p align="center">
-  <img src="figures/representation.png" width="90%">
+  <img src="figures/representation.png" width="50%">
 </p>
 
 *Receptive fields of 25 hidden units across training iterations. Patterns emerge and specialize over time.*
@@ -46,7 +46,7 @@ Our experiments focus on the MNIST dataset, where we assess reconstruction quali
 ### Towards deep networks: greedy layer-wise pretraining
 
 <p align="center">
-  <img src="figures/loss_dbn.png" width="90%">
+  <img src="figures/loss_dbn.png" width="50%">
 </p>
 
 *Loss curves from unsupervised training of each RBM layer in the DBN stack.*
