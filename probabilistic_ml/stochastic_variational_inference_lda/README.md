@@ -7,7 +7,7 @@ This project implements **Stochastic Variational Inference (SVI)** for the **Lat
 Both SVI and Coordinate Ascent Variational Inference (CAVI) were tested on synthetic datasets to evaluate convergence behavior and efficiency.
 
 <p align="center">
-  <img src="figures/lda_dgm.JPG" alt="LDA graphical model" width="50%">
+  <img src="figures/lda_dgm.png" alt="LDA graphical model" width="60%">
 </p>
 
 *Graphical model of LDA: words $w_{d,n}$ depend on topics $z_{d,n}$, which are sampled from per-document topic proportions $\theta_d$, with global topic-word distributions $\beta_k$.*
