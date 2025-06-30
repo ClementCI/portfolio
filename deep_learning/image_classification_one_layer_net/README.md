@@ -91,23 +91,21 @@ Experiments include:
 
 ## Methodology
 
-- **Forward Pass**: Scores are computed as \( s = Wx + b \), followed by Softmax or Sigmoid.
+- **Forward Pass**: Scores are computed as  $s = Wx + b$, followed by Softmax or Sigmoid.
   
 - **Loss Functions**:
   - Cross-entropy with Softmax:
-    $$
-    \text{CE} = -\log P(y \mid x)
-    $$
+    
+    $\text{CE} = -\log P(y \mid x)$
+    
   - MBCE with Sigmoid:
-    $$
-    \text{MBCE} = - \frac{1}{K} \sum_{k=1}^{K} \left[ y_k \log(p_k) + (1 - y_k) \log(1 - p_k) \right]
-    $$
+    
+    $\text{MBCE} = - \frac{1}{K} \sum_{k=1}^{K} \left[ y_k \log(p_k) + (1 - y_k) \log(1 - p_k) \right]$
 
-- **Gradient Computation**: 
+- **Gradient Computation**:
+  
   Verified using numerical gradients and PyTorch's automatic differentiation:
-  $$
-  \frac{\partial \mathcal{L}}{\partial W}, \quad \frac{\partial \mathcal{L}}{\partial b}
-  $$
+  $\frac{\partial \mathcal{L}}{\partial W}, \quad \frac{\partial \mathcal{L}}{\partial b}$
 
 - **Training**:
   - Mini-batch gradient descent
