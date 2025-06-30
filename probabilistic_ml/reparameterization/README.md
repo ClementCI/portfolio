@@ -28,7 +28,7 @@ These methods allow **reparameterization gradients** for backpropagation through
 ### Beta Distribution
 
 <p align="center">
-  <img src="figures/beta_samples.png" width="60%">
+  <img src="figures/beta_samples.png" width="50%">
 </p>
 
 ### Dirichlet Distribution
