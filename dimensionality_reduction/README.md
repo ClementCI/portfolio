@@ -20,7 +20,7 @@ Additionally, we explore how political structure evolves over time by applying M
 ## Visual Insights
 
 <p align="center">
-  <img src="figures/mds_epg.png" width="80%">
+  <img src="figures/mds_epg.png" width="50%">
 </p>
 
 *2D projection of 40 MEPs using Classical MDS, annotated with European Parliament Group and nationality.*
@@ -32,7 +32,7 @@ Additionally, we explore how political structure evolves over time by applying M
 *Time-based MDS embeddings for MEPs across four legislative periods, labeled by EPG.*
 
 <p align="center">
-  <img src="figures/meps_avg.png" width="80%">
+  <img src="figures/meps_time_avg.png" width="80%">
 </p>
 
 *Average MDS embeddings of EPGs across four legislative periods.*
