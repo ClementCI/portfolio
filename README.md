@@ -2,7 +2,7 @@
 
 
 
-Welcome to my portfolio of machine learning and data science projects, developed as part of my academic coursework. Each project explores a different area of modern AI, from fundamental algorithms to deep probabilistic models and neural networks. All implementations are original and emphasize conceptual clarity, practical experimentation, and reproducibility. Among these, the \[Embedded Topic Model for Document Analysis](#embedded-topic-model-for-document-analysis) and \[CNN Architectures for Image Classification: From VGG to ConvNeXt](#cnn-architectures-for-image-classification-from-vgg-to-convnext) stand out as key projects, showcasing up-to-date techniques at the intersection of deep learning and representation learning.
+Welcome to my portfolio of machine learning and data science projects, developed as part of my academic coursework. Each project explores a different area of modern AI, from fundamental algorithms to deep probabilistic models and neural networks. All implementations are original and emphasize conceptual clarity, practical experimentation, and reproducibility. Among these, the [Embedded Topic Model for Document Analysis](#embedded-topic-model-for-document-analysis) and [CNN Architectures for Image Classification: From VGG to ConvNeXt](#cnn-architectures-for-image-classification-from-vgg-to-convnext) stand out as key projects, showcasing up-to-date techniques at the intersection of deep learning and representation learning.
 
 
 
@@ -10,83 +10,83 @@ Welcome to my portfolio of machine learning and data science projects, developed
 
 
 
-\## Table of Contents
+## Table of Contents
 
 
 
-\### Fundamental Machine Learning Projects
+### Fundamental Machine Learning Projects
 
-\- \[Decision Tree Learning on the MONK Datasets](#decision-tree-learning-on-the-monk-datasets)
+- [Decision Tree Learning on the MONK Datasets](#decision-tree-learning-on-the-monk-datasets)
 
-\- \[Support Vector Machine Classifier](#support-vector-machine-classifier)
+- [Support Vector Machine Classifier](#support-vector-machine-classifier)
 
-\- \[Bayesian Classification and Boosting](#bayesian-classification-and-boosting)
+- [Bayesian Classification and Boosting](#bayesian-classification-and-boosting)
 
-\- \[Supervised Classification Challenge](#supervised-classification-challenge)
-
-
-
-\### Probabilistic Machine Learning Projects
-
-\- \[Coordinate Ascent Variational Inference](#coordinate-ascent-variational-inference)
-
-\- \[Stochastic Variational Inference for Latent Dirichlet Allocation](#stochastic-variational-inference-for-latent-dirichlet-allocation)
-
-\- \[Reparameterization of Common Distributions](#reparameterization-of-common-distributions)
-
-\- \[Variational Autoencoder (VAE) for MNIST Latent Representation and Image Generation](#variational-autoencoder-vae-for-mnist-latent-representation-and-image-generation)
-
-\- \[Embedded Topic Model for Document Analysis](#embedded-topic-model-for-document-analysis)
+- [Supervised Classification Challenge](#supervised-classification-challenge)
 
 
 
-\### Vision Projects
+### Probabilistic Machine Learning Projects
 
-\- \[Filtering Operations](#filtering-operations)
+- [Coordinate Ascent Variational Inference](#coordinate-ascent-variational-inference)
 
-\- \[Edge Detection and Hough Transform](#edge-detection-and-hough-transform)
+- [Stochastic Variational Inference for Latent Dirichlet Allocation](#stochastic-variational-inference-for-latent-dirichlet-allocation)
 
-\- \[Image Matching \& 3D Reconstruction](#image-matching--3d-reconstruction)
+- [Reparameterization of Common Distributions](#reparameterization-of-common-distributions)
 
+- [Variational Autoencoder (VAE) for MNIST Latent Representation and Image Generation](#variational-autoencoder-vae-for-mnist-latent-representation-and-image-generation)
 
-
-\### Deep Learning Projects
-
-\- \[Multi-Layer Perceptrons for Classification and Function Approximation](#multi-layer-perceptrons-for-classification-and-function-approximation)
-
-\- \[Hopfield Networks for Associative Memory](#hopfield-networks-for-associative-memory)
-
-\- \[Deep Belief Networks with Restricted Boltzmann Machines](#deep-belief-networks-with-restricted-boltzmann-machines)
-
-\- \[Image Classification with a 1-layer Network](#image-classification-with-a-1-layer-network)
-
-\- \[Image Classification with a 2-layer Network](#image-classification-with-a-2-layer-network)
-
-\- \[Image Classification with a Convolutional Neural Network](#image-classification-with-a-convolutional-neural-network)
-
-\- \[CNN Architectures for Image Classification: From VGG to ConvNeXt](#cnn-architectures-for-image-classification-from-vgg-to-convnext)
-
-\- \[Character-Level Language Modeling with RNN](#character-level-language-modeling-with-rnn)
+- [Embedded Topic Model for Document Analysis](#embedded-topic-model-for-document-analysis)
 
 
 
-\### Dimensionality Reduction Project
+### Vision Projects
 
-\- \[Dimensionality Reduction of MEP Voting Data](#dimensionality-reduction-project)
+- [Filtering Operations](#filtering-operations)
+
+- [Edge Detection and Hough Transform](#edge-detection-and-hough-transform)
+
+- [Image Matching & 3D Reconstruction](#image-matching--3d-reconstruction)
 
 
 
+### Deep Learning Projects
+
+- [Multi-Layer Perceptrons for Classification and Function Approximation](#multi-layer-perceptrons-for-classification-and-function-approximation)
+
+- [Hopfield Networks for Associative Memory](#hopfield-networks-for-associative-memory)
+
+- [Deep Belief Networks with Restricted Boltzmann Machines](#deep-belief-networks-with-restricted-boltzmann-machines)
+
+- [Image Classification with a 1-layer Network](#image-classification-with-a-1-layer-network)
+
+- [Image Classification with a 2-layer Network](#image-classification-with-a-2-layer-network)
+
+- [Image Classification with a Convolutional Neural Network](#image-classification-with-a-convolutional-neural-network)
+
+- [CNN Architectures for Image Classification: From VGG to ConvNeXt](#cnn-architectures-for-image-classification-from-vgg-to-convnext)
+
+- [Character-Level Language Modeling with RNN](#character-level-language-modeling-with-rnn)
 
 
 
+### Dimensionality Reduction Project
 
-\## Fundamental Machine Learning Projects
+- [Dimensionality Reduction of MEP Voting Data](#dimensionality-reduction-project)
 
 
 
 
 
-The `fundamental\_ml` folder showcases basic machine learning concepts through carefully implemented classification algorithms and structured experiments. Each project demonstrates a key method in supervised learning, with a focus on both theoretical grounding and practical evaluation. All implementations are built from scratch to enhance understanding of core ML techniques such as probabilistic modeling, decision boundaries, tree-based learning, and support vector machines.
+
+
+## Fundamental Machine Learning Projects
+
+
+
+
+
+The `fundamental_ml` folder showcases basic machine learning concepts through carefully implemented classification algorithms and structured experiments. Each project demonstrates a key method in supervised learning, with a focus on both theoretical grounding and practical evaluation. All implementations are built from scratch to enhance understanding of core ML techniques such as probabilistic modeling, decision boundaries, tree-based learning, and support vector machines.
 
 
 
@@ -94,7 +94,7 @@ The `fundamental\_ml` folder showcases basic machine learning concepts through c
 
 ---
 
-\### Decision Tree Learning on the MONK Datasets
+### Decision Tree Learning on the MONK Datasets
 
 
 
@@ -102,27 +102,27 @@ This project implements decision tree learning from scratch using a greedy top-d
 
 
 
-\[Go to Decision Tree Learning on the MONK Datasets](./fundamental\_ml/decision\_trees/README.md)
+[Go to Decision Tree Learning on the MONK Datasets](./fundamental_ml/decision_trees/README.md)
 
 
 
 
 
-\### Support Vector Machine Classifier
+### Support Vector Machine Classifier
 
 
 
-This project builds a Support Vector Machine (SVM) classifier from scratch using the dual optimization formulation and kernel methods. It supports linear, polynomial, and radial basis function (RBF) kernels and visualizes how each affects the decision boundary. The implementation includes margin tuning via the regularization parameter \\( C \\), with experiments conducted on synthetic 2D datasets to explore separability, overfitting, and kernel expressiveness.
+This project builds a Support Vector Machine (SVM) classifier from scratch using the dual optimization formulation and kernel methods. It supports linear, polynomial, and radial basis function (RBF) kernels and visualizes how each affects the decision boundary. The implementation includes margin tuning via the regularization parameter ( C ), with experiments conducted on synthetic 2D datasets to explore separability, overfitting, and kernel expressiveness.
 
 
 
-\[Go to Support Vector Machine Classifier](./fundamental\_ml/support\_vector\_machines/README.md)
+[Go to Support Vector Machine Classifier](./fundamental_ml/support_vector_machines/README.md)
 
 
 
 
 
-\### Bayesian Classification and Boosting
+### Bayesian Classification and Boosting
 
 
 
@@ -130,7 +130,7 @@ This project implements and evaluates a Naive Bayes classifier and its boosted v
 
 
 
-\[Go to Bayesian Classification and Boosting](./fundamental\_ml/bayes\_classifier\_and\_boosting/README.md)
+[Go to Bayesian Classification and Boosting](./fundamental_ml/bayes_classifier_and_boosting/README.md)
 
 
 
@@ -140,7 +140,7 @@ This project implements and evaluates a Naive Bayes classifier and its boosted v
 
 
 
-\### Supervised Classification Challenge
+### Supervised Classification Challenge
 
 
 
@@ -148,7 +148,7 @@ This project tackles a supervised classification problem involving a labeled dat
 
 
 
-\[Go to Supervised Classification Challenge](./fundamental\_ml/classification\_challenge/README.md)
+[Go to Supervised Classification Challenge](./fundamental_ml/classification_challenge/README.md)
 
 
 
@@ -158,11 +158,11 @@ This project tackles a supervised classification problem involving a labeled dat
 
 
 
-\## Probabilistic Machine Learning Projects
+## Probabilistic Machine Learning Projects
 
 
 
-The `probabilistic\_ml` folder explores key ideas in Bayesian machine learning and variational inference through a series of carefully designed projects. Each implementation focuses on modeling uncertainty, approximating complex posteriors, or enabling scalable inference in probabilistic frameworks. From latent variable models and topic modeling to reparameterization techniques and variational autoencoders, these projects emphasize both mathematical rigor and empirical validation, with custom implementations built from scratch or in PyTorch.
+The `probabilistic_ml` folder explores key ideas in Bayesian machine learning and variational inference through a series of carefully designed projects. Each implementation focuses on modeling uncertainty, approximating complex posteriors, or enabling scalable inference in probabilistic frameworks. From latent variable models and topic modeling to reparameterization techniques and variational autoencoders, these projects emphasize both mathematical rigor and empirical validation, with custom implementations built from scratch or in PyTorch.
 
 
 
@@ -172,7 +172,7 @@ The `probabilistic\_ml` folder explores key ideas in Bayesian machine learning a
 
 
 
-\### Coordinate Ascent Variational Inference
+### Coordinate Ascent Variational Inference
 
 
 
@@ -180,13 +180,13 @@ This project implements Coordinate Ascent Variational Inference (CAVI) to approx
 
 
 
-\[Go to Coordinate Ascent Variational Inference](./probabilistic\_ml/coordinate\_ascent\_variational\_inference/README.md)
+[Go to Coordinate Ascent Variational Inference](./probabilistic_ml/coordinate_ascent_variational_inference/README.md)
 
 
 
 
 
-\### Stochastic Variational Inference for Latent Dirichlet Allocation
+### Stochastic Variational Inference for Latent Dirichlet Allocation
 
 
 
@@ -194,13 +194,13 @@ This project implements Stochastic Variational Inference (SVI) for Latent Dirich
 
 
 
-\[Go to Stochastic Variational Inference for Latent Dirichlet Allocation](./probabilistic\_ml/stochastic\_variational\_inference\_lda/README.md)
+[Go to Stochastic Variational Inference for Latent Dirichlet Allocation](./probabilistic_ml/stochastic_variational_inference_lda/README.md)
 
 
 
 
 
-\### Reparameterization of Common Distributions
+### Reparameterization of Common Distributions
 
 
 
@@ -210,13 +210,13 @@ This project focuses on enabling gradient-based optimization for models involvin
 
 
 
-\[Go to Reparameterization of Common Distributions](./probabilistic\_ml/reparameterization/README.md)
+[Go to Reparameterization of Common Distributions](./probabilistic_ml/reparameterization/README.md)
 
 
 
 
 
-\### Variational Autoencoder (VAE) for MNIST Latent Representation and Image Generation
+### Variational Autoencoder (VAE) for MNIST Latent Representation and Image Generation
 
 
 
@@ -224,13 +224,13 @@ A deep generative model is implemented to learn compressed latent representation
 
 
 
-\[Go to VAE for MNIST Latent Representation and Image Generation](./probabilistic\_ml/variational\_autoencoders/README.md)
+[Go to VAE for MNIST Latent Representation and Image Generation](./probabilistic_ml/variational_autoencoders/README.md)
 
 
 
 
 
-\### Embedded Topic Model for Document Analysis
+### Embedded Topic Model for Document Analysis
 
 
 
@@ -238,7 +238,7 @@ This project implements the Embedded Topic Model (ETM), which fuses traditional 
 
 
 
-\[Go to Embedded Topic Model for Document Analysis](./probabilistic\_ml/embedded\_topic\_model/README.md)
+[Go to Embedded Topic Model for Document Analysis](./probabilistic_ml/embedded_topic_model/README.md)
 
 
 
@@ -246,7 +246,7 @@ This project implements the Embedded Topic Model (ETM), which fuses traditional 
 
 
 
-\## Vision Projects
+## Vision Projects
 
 
 
@@ -258,7 +258,7 @@ The `vision` folder contains projects focused on classical computer vision techn
 
 
 
-\### Filtering Operations
+### Filtering Operations
 
 
 
@@ -266,11 +266,11 @@ This project explores the use of the Discrete Fourier Transform (DFT) for image 
 
 
 
-\[Go to Filtering Operations](./vision/filtering\_operations/README.md)
+[Go to Filtering Operations](./vision/filtering_operations/README.md)
 
 
 
-\### Edge Detection and Hough Transform
+### Edge Detection and Hough Transform
 
 
 
@@ -278,13 +278,13 @@ This project explores edge detection through multiscale differential operators a
 
 
 
-\[Go to Edge Detection and Hough Transform](./vision/edge\_detection\_and\_hough\_transform/README.md)
+[Go to Edge Detection and Hough Transform](./vision/edge_detection_and_hough_transform/README.md)
 
 
 
 
 
-\### Image Matching \& 3D Reconstruction
+### Image Matching & 3D Reconstruction
 
 
 
@@ -292,17 +292,17 @@ This project explores how to recover scene geometry from images using feature-ba
 
 
 
-\[Go to Image Matching \& 3D Reconstruction](./vision/image\_matching\_and\_3d\_reconstruction/README.md)
+[Go to Image Matching & 3D Reconstruction](./vision/image_matching_and_3d_reconstruction/README.md)
 
 
 
 
 
-\## Deep Learning Projects
+## Deep Learning Projects
 
 
 
-The `deep\_learning` folder features a collection of end-to-end deep learning projects built from scratch or using PyTorch. Covering a wide range of architectures and tasks—from feedforward neural networks to convolutional and recurrent models—these projects emphasize implementation, training, and evaluation of deep networks. Key topics include gradient validation, unsupervised pretraining, image classification, generative models, architectural ablations, and sequence modeling. Each project explores how network design, regularization, and optimization influence generalization and performance on real-world datasets.
+The `deep_learning` folder features a collection of end-to-end deep learning projects built from scratch or using PyTorch. Covering a wide range of architectures and tasks—from feedforward neural networks to convolutional and recurrent models—these projects emphasize implementation, training, and evaluation of deep networks. Key topics include gradient validation, unsupervised pretraining, image classification, generative models, architectural ablations, and sequence modeling. Each project explores how network design, regularization, and optimization influence generalization and performance on real-world datasets.
 
 
 
@@ -312,7 +312,7 @@ The `deep\_learning` folder features a collection of end-to-end deep learning pr
 
 
 
-\### Multi-Layer Perceptrons for Classification and Function Approximation
+### Multi-Layer Perceptrons for Classification and Function Approximation
 
 
 
@@ -320,11 +320,11 @@ This project implements and investigates multi-layer perceptrons (MLPs) for supe
 
 
 
-\[Go to Multi-Layer Perceptrons for Classification and Function Approximation](./deep\_learning/classification\_regression\_mlp/README.md)
+[Go to Multi-Layer Perceptrons for Classification and Function Approximation](./deep_learning/classification_regression_mlp/README.md)
 
 
 
-\### Hopfield Networks for Associative Memory
+### Hopfield Networks for Associative Memory
 
 
 
@@ -332,13 +332,13 @@ This project explores the capacity and retrieval dynamics of Hopfield networks t
 
 
 
-\[Go to Hopfield Networks for Associative Memory](./deep\_learning/hopfield\_net\_associative\_memory/README.md)
+[Go to Hopfield Networks for Associative Memory](./deep_learning/hopfield_net_associative_memory/README.md)
 
 
 
 
 
-\### Deep Belief Networks with Restricted Boltzmann Machines
+### Deep Belief Networks with Restricted Boltzmann Machines
 
 
 
@@ -346,7 +346,7 @@ This project implements a Deep Belief Network (DBN) composed of stacked Restrict
 
 
 
-\[Go to Deep Belief Networks with Restricted Boltzmann Machines](./deep\_learning/deep\_belief\_net\_rbm/README.md)
+[Go to Deep Belief Networks with Restricted Boltzmann Machines](./deep_learning/deep_belief_net_rbm/README.md)
 
 
 
@@ -354,7 +354,7 @@ This project implements a Deep Belief Network (DBN) composed of stacked Restrict
 
 
 
-\### Image Classification with a 1-layer Network
+### Image Classification with a 1-layer Network
 
 
 
@@ -362,7 +362,7 @@ This project implements a fully connected one-layer neural network from scratch 
 
 
 
-\[Go to Image Classification with a 1-layer Network](./deep\_learning/image\_classification\_one\_layer\_net/README.md)
+[Go to Image Classification with a 1-layer Network](./deep_learning/image_classification_one_layer_net/README.md)
 
 
 
@@ -370,7 +370,7 @@ This project implements a fully connected one-layer neural network from scratch 
 
 
 
-\### Image Classification with a 2-Layer Network
+### Image Classification with a 2-Layer Network
 
 
 
@@ -378,13 +378,13 @@ This project focuses on training a fully connected 2-layer neural network from s
 
 
 
-\[Go to Image Classification with a 2-layer Network](./deep\_learning/image\_classification\_two\_layer\_net/README.md)
+[Go to Image Classification with a 2-layer Network](./deep_learning/image_classification_two_layer_net/README.md)
 
 
 
 
 
-\### Image Classification with a Convolutional Neural Network
+### Image Classification with a Convolutional Neural Network
 
 
 
@@ -392,11 +392,11 @@ This project implements and trains a convolutional neural network entirely with 
 
 
 
-\[Go to Image Classification with a Convolutional Neural Network](./deep\_learning/image\_classification\_ConvNet/README.md)
+[Go to Image Classification with a Convolutional Neural Network](./deep_learning/image_classification_ConvNet/README.md)
 
 
 
-\### CNN Architectures for Image Classification: From VGG to ConvNeXt
+### CNN Architectures for Image Classification: From VGG to ConvNeXt
 
 
 
@@ -404,21 +404,21 @@ This project explores the evolution of convolutional neural network architecture
 
 
 
-\[Go to CNN Architectures for Image Classification: From VGG to ConvNeXt](./deep\_learning/image\_classification\_advanced\_ConvNet/README.md)
+[Go to CNN Architectures for Image Classification: From VGG to ConvNeXt](./deep_learning/image_classification_advanced_ConvNet/README.md)
 
 
 
 
 
-\### Character-Level Language Modeling with RNN
+### Character-Level Language Modeling with RNN
 
 
 
-This project involves building a recurrent neural network (RNN) from scratch using NumPy to perform character-level language modeling. The model is trained on a cleaned version of \*"Harry Potter and the Goblet of Fire"\*, aiming to predict the next character in a sequence and generate plausible text. The implementation includes manual forward and backward passes, gradient validation against PyTorch, and use of the Adam optimizer. Experiments explore the effects of sequence randomization, batch size, and sampling strategies (temperature scaling and nucleus sampling) on model performance and text generation quality.
+This project involves building a recurrent neural network (RNN) from scratch using NumPy to perform character-level language modeling. The model is trained on a cleaned version of *"Harry Potter and the Goblet of Fire"*, aiming to predict the next character in a sequence and generate plausible text. The implementation includes manual forward and backward passes, gradient validation against PyTorch, and use of the Adam optimizer. Experiments explore the effects of sequence randomization, batch size, and sampling strategies (temperature scaling and nucleus sampling) on model performance and text generation quality.
 
 
 
-\[Go to Character-Level Language Modeling with RNN](./deep\_learning/language\_modeling\_rnn/README.md)
+[Go to Character-Level Language Modeling with RNN](./deep_learning/language_modeling_rnn/README.md)
 
 
 
@@ -426,15 +426,15 @@ This project involves building a recurrent neural network (RNN) from scratch usi
 
 
 
-\## Dimensionality Reduction Project
+## Dimensionality Reduction Project
 
 
 
-The `dimensionality\_reduction` project explores the ideological structure of the European Parliament by applying dimensionality reduction to voting records of Members of the European Parliament (MEPs). A custom similarity function, robust to abstentions and missing values, is used to measure alignment between MEPs. Classical Multidimensional Scaling (MDS) is then applied to project these relationships into two dimensions. Temporal dynamics are also explored by computing time-based MDS projections and aligning them with Procrustes analysis to visualize ideological shifts across four legislative periods.
+The `dimensionality_reduction` project explores the ideological structure of the European Parliament by applying dimensionality reduction to voting records of Members of the European Parliament (MEPs). A custom similarity function, robust to abstentions and missing values, is used to measure alignment between MEPs. Classical Multidimensional Scaling (MDS) is then applied to project these relationships into two dimensions. Temporal dynamics are also explored by computing time-based MDS projections and aligning them with Procrustes analysis to visualize ideological shifts across four legislative periods.
 
 
 
-\[Go to Dimensionality Reduction Project](./dimensionality\_reduction/README.md)
+[Go to Dimensionality Reduction Project](./dimensionality_reduction/README.md)
 
 
 
