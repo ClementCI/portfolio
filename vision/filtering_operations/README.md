@@ -24,23 +24,23 @@ The study provides both theoretical understanding and practical experience with 
 ## Visual Insights
 
 <p align="center">
-  <img src="figures/phase_magnitude.png" width="90%">
+  <img src="figures/phase_magnitude.png" width="70%">
 </p>
 
 *Information contained in the magnitude and phase of the Fourier transform.*
 
 <p align="center">
-  <img src="figures/gauss_filter.png" width="90%">
+  <img src="figures/gauss_filter.png" width="60%">
 </p>
 
 <p align="center">
-  <img src="figures/median_filter.png" width="90%">
+  <img src="figures/median_filter.png" width="60%">
 </p>
 
 *Comparison of smoothing filters applied to noisy images.*
 
 <p align="center">
-  <img src="figures/subsampling_effect.png" width="90%">
+  <img src="figures/subsampling_effect.png" width="80%">
 </p>
 
 *Subsampling effects on raw vs. pre-smoothed images.*
