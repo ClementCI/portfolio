@@ -10,7 +10,8 @@ Both SVI and Coordinate Ascent Variational Inference (CAVI) were tested on synth
   <img src="figures/lda_dgm.png" alt="LDA graphical model" width="60%">
 </p>
 
-*Graphical model of LDA: words $w_{d,n}$ depend on topics $z_{d,n}$, which are sampled from per-document topic proportions $\theta_d$, with global topic-word distributions $\beta_k$.*
+*Graphical model of LDA: words w₍d,ₙ₎ depend on topics z₍d,ₙ₎, sampled from per-document proportions θ_d, with global topic-word distributions β_k.*
+
 
 ## Key Results
 
