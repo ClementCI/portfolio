@@ -82,21 +82,15 @@ Patterns were stored and recalled using both synchronous (little model) and asyn
 
 - **Learning Rule** (Hebbian):
 
-  $$
-  w_{ij} = \frac{1}{N}\sum_{\mu=1}^{P} x_i^\mu x_j^\mu
-  $$
+  $w_{ij} = \frac{1}{N}\sum_{\mu=1}^{P} x_i^\mu x_j^\mu$
 
 - **Recall Rule**:
 
-  $$
-  x_i \leftarrow \text{sign} \left( \sum_j w_{ij} x_j \right)
-  $$
+  $x_i \leftarrow \text{sign} \left( \sum_j w_{ij} x_j \right)$
 
 - **Energy Function**:
 
-  $$
-  E = - \sum_{i} \sum_j w_{ij} x_i x_j
-  $$
+  $E = - \sum_{i} \sum_j w_{ij} x_i x_j$
 
 - **Sparse Learning**: Adjusted rule using mean activity $\rho$ and a bias threshold $\theta$
 
