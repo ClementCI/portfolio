@@ -46,7 +46,8 @@ Experiments were conducted on synthetic datasets with varying document counts an
   <img src="figures/elbo_100.png" width="45%" style="margin-right: 5%;">
   <img src="figures/elbo_1000.png" width="45%">
 </p>
-*ELBO convergence for both ***CAVI*** and ***SVI***   across datasets of increasing size*
+
+*ELBO convergence for both ***CAVI*** and ***SVI*** for tiny (left) and small (right) datasets.*
 
 
 ## Features
