@@ -57,7 +57,7 @@ All datasets are loaded from the `data/` directory using a unified interface.
 
 - `utils.py`: Contains helper functions and reusable components for loading datasets, visualizing results, splitting data, performing PCA, and implementing classifiers (Naive Bayes, Decision Tree)
 
-- 'data/': All three datasets that are being used in this project
+- `data/`: All three datasets that are being used in this project
 
 ## Methodology
 
