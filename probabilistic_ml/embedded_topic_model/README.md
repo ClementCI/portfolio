@@ -20,7 +20,7 @@ As visualized in the figures below, the model captured the core ideas of ETM and
 
 
 <p align="center">
-  <img src="figures/coherence_perplexity_vs_voc_size.png" width="70%">
+  <img src="figures/coherence_perplexity_vs_voc_size.png" width="60%">
 </p>
 
 *Coherence-normalized perplexity of LDA and ETM as a function of vocabulary size.*
