@@ -44,7 +44,7 @@ The model is trained using **mini-batch gradient descent** with either a **cycli
   <img src="figures/default_reg.png" width="80%">
 </p>
 
-*Loss (left) and accuracy (right) with a cyclical learning rate and L2 regularization ($\lambda=1.608 \times 10−5$).*
+*Loss (left) and accuracy (right) with a cyclical learning rate and L2 regularization (λ = 1.608 × 10⁻⁵).*
 
 
 <p align="center">
@@ -86,23 +86,20 @@ The model is trained using **mini-batch gradient descent** with either a **cycli
 - **Forward Pass**:
   - First layer: Linear → ReLU
   - Second layer: Linear → Softmax
-  - Scores computed as:  
-    $$
-    s = W_2 \cdot \text{ReLU}(W_1 x + b_1) + b_2
-    $$
+  - Scores computed as:
+    
+    $s = W_2 \cdot \text{ReLU}(W_1 x + b_1) + b_2$
 
 - **Loss**:
   - Categorical cross-entropy loss:
-    $$
-    \mathcal{L} = -\log P(y \mid x)
-    $$
+    
+    $\mathcal{L} = -\log P(y \mid x)$
 
 - **Gradient Computation**:
   - Backpropagation used for exact gradients
   - Validated against numerical approximations:
-    $$
-    \frac{\partial \mathcal{L}}{\partial W_1}, \quad \frac{\partial \mathcal{L}}{\partial W_2}, \quad \frac{\partial \mathcal{L}}{\partial b_1}, \quad \frac{\partial \mathcal{L}}{\partial b_2}
-    $$
+    
+    $\frac{\partial \mathcal{L}}{\partial W_1}, \quad \frac{\partial \mathcal{L}}{\partial W_2}, \quad \frac{\partial \mathcal{L}}{\partial b_1}, \quad \frac{\partial \mathcal{L}}{\partial b_2}$
 
 - **Optimization**:
   - SGD with cyclical learning rate:  
