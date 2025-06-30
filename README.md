@@ -86,7 +86,7 @@ Welcome to my portfolio of machine learning and data science projects, developed
 
 
 
-The `fundamental_ml` folder showcases basic machine learning concepts through carefully implemented classification algorithms and structured experiments. Each project demonstrates a key method in supervised learning, with a focus on both theoretical grounding and practical evaluation. All implementations are built from scratch to enhance understanding of core ML techniques such as probabilistic modeling, decision boundaries, tree-based learning, and support vector machines.
+The `fundamental_ml` folder showcases basic machine learning concepts through carefully implemented classification algorithms and structured experiments. Each project demonstrates a key method in supervised learning, with a focus on both theoretical grounding and practical evaluation. All implementations are built from scratch to enhance understanding of core ML techniques such as probabilistic modeling, tree-based learning, ensemble methods, and support vector machines.
 
 
 
@@ -112,7 +112,7 @@ This project implements decision tree learning from scratch using a greedy top-d
 
 
 
-This project builds a Support Vector Machine (SVM) classifier from scratch using the dual optimization formulation and kernel methods. It supports linear, polynomial, and radial basis function (RBF) kernels and visualizes how each affects the decision boundary. The implementation includes margin tuning via the regularization parameter ( C ), with experiments conducted on synthetic 2D datasets to explore separability, overfitting, and kernel expressiveness.
+This project builds a Support Vector Machine (SVM) classifier from scratch using the dual optimization formulation and kernel methods. It supports linear, polynomial, and radial basis function (RBF) kernels and visualizes how each affects the decision boundary. The implementation includes margin tuning via the regularization parameter ($C$), with experiments conducted on synthetic 2D datasets to explore separability, overfitting, and kernel expressiveness.
 
 
 
