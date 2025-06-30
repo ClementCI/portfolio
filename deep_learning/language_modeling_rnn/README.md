@@ -86,13 +86,13 @@ The model is trained on a cleaned version of *"Harry Potter and the Goblet of Fi
 - **Forward Pass**:
   - Input characters are embedded as one-hot vectors
   - Hidden state updated via:
-    $$
-    h_t = \tanh(W h_{t-1} + U x_t + b)
-    $$
+    
+    $h_t = \tanh(W h_{t-1} + U x_t + b)$
+    
   - Output scores:
-    $$
-    o_t = V h_t + c
-    $$
+    
+    $o_t = V h_t + c$
+    
   - Softmax over $o_t$ yields character distribution
 
 - **Backward Pass**:
@@ -106,9 +106,9 @@ The model is trained on a cleaned version of *"Harry Potter and the Goblet of Fi
 
 - **Sampling**:
   - Softmax sampling with optional temperature scaling:
-    $$
-    p_i = \frac{e^{o_i / T}}{\sum_j e^{o_j / T}}
-    $$
+    
+    $p_i = \frac{e^{o_i / T}}{\sum_j e^{o_j / T}}$
+    
   - Nucleus sampling from top-k cumulative probability set
 
 ## Installation
