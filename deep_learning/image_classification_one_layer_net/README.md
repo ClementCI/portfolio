@@ -24,7 +24,8 @@ Experiments include:
 | Setting 1                | 0.1               | 0.0        | 43.43%  | 28.42%         |
 | **Setting 2**                      | **0.001**                | **0.0**        | **45.54%**   | **39.92%**         |
 | Setting 3           | 0.001               | 0.1      | 44.73%  | 39.40%         |
-| Setting 4           | 0.001               | 1      | 40.14%  | 37.38%         |
+| Setting 4           | 0.001               | 1      | 40.14%  | 37.38%         |4
+
 *Final classification accuracy across various training configurations (without additional optimization techniques).*
 
 - **Optimization Strategies**: Using a larger training set, learning rate decay, grid-search optimization of hyperparameters, and light data augmentation further improved generalization and narrowed the train/test accuracy gap.
