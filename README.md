@@ -358,7 +358,7 @@ This project implements a Deep Belief Network (DBN) composed of stacked Restrict
 
 
 
-This project implements a fully connected one-layer neural network from scratch for image classification on CIFAR-10. It focuses on validating analytical gradient computations and studying the impact of various training strategies and hyperparameters. The model is trained using mini-batch gradient descent with two loss functions: categorical cross-entropy and multiple binary cross-entropy. The experiments explore the effects of learning rate, regularization, loss choice, and data augmentation, demonstrating reliable gradient accuracy and good generalization under optimized settings.
+This project implements a fully connected one-layer neural network from scratch for image classification on CIFAR-10. It focuses on validating analytical gradient computations and studying the impact of various training strategies and hyperparameters. The model is trained using mini-batch gradient descent with two loss functions: categorical cross-entropy and multiple binary cross-entropy. The experiments explore the effects of learning rate, regularization, loss choice, and data augmentation, demonstrating reliable gradient accuracy and good generalization under optimized settings, reaching over 42% accuracy.
 
 
 
