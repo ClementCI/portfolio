@@ -8,13 +8,13 @@ This project explores the implementation of a Naive Bayes classifier and its ext
 | Dataset | Classifier              | Accuracy (%) | Std Dev |
 |---------|--------------------------|--------------|---------|
 | Iris    | Naive Bayes              | 89.0         | 4.16    |
-| Iris    | Boosted Naive Bayes      | 94.7         | 2.82    |
+| Iris    | Boosted Naive Bayes      | **94.7**         | 2.82    |
 | Iris    | Decision Tree            | 92.4         | 3.71    |
 | Iris    | Boosted Decision Tree    | 94.6         | 3.65    |
 | Vowel   | Naive Bayes              | 64.7         | 4.03    |
 | Vowel   | Boosted Naive Bayes      | 80.2         | 3.52    |
 | Vowel   | Decision Tree            | 64.1         | 4.00    |
-| Vowel   | Boosted Decision Tree    | 86.6         | 2.85    |
+| Vowel   | Boosted Decision Tree    | **86.6**         | 2.85    |
 
 Boosting significantly improved performance across datasets, particularly for the more complex vowel data.
 
