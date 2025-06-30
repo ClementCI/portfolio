@@ -10,7 +10,7 @@ The implementation is based on Hinton et al.'s foundational work:
 Our experiments focus on the MNIST dataset, where we assess reconstruction quality, training stability, classification accuracy, and generative capacity. We analyze how design choices—such as hidden layer sizes, learning rates, and momentum—impact learning dynamics.
 
 <p align="center">
-  <img src="figures/scheme.png" width="50%">
+  <img src="figures/scheme.png" width="40%">
 </p>
 
 *Deep belief network architecture (source: Hinton et al.).*
@@ -52,7 +52,7 @@ Our experiments focus on the MNIST dataset, where we assess reconstruction quali
 *Loss curves from unsupervised training of each RBM layer in the DBN stack.*
 
 <p align="center">
-  <img src="figures/generation.gif" width="90%">
+  <img src="figures/generation.gif" width="80%">
 </p>
 
 *Digit generation over alternating Gibbs sampling steps in the top RBM layer.*
