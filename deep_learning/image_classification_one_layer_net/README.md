@@ -48,7 +48,7 @@ Experiments include:
 *Training and validation losses across settings with different learning rates and regularization.*
 
 <p align="center">
-  <img src="figures/weight_matrix.png" width="80%">
+  <img src="figures/weight_matrix.png" width="60%">
 </p>
 
 *Visualization of learned weight matrices: clearer features emerge with increased regularization.*
