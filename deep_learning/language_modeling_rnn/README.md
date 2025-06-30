@@ -39,13 +39,13 @@ The model is trained on a cleaned version of *"Harry Potter and the Goblet of Fi
 
 
 <p align="center">
-  <img src="figures/randomization_loss.png" width="80%">
+  <img src="figures/randomization_loss.png" width="50%">
 </p>
 
 *Smoothed validation loss comparing sequence randomization strategies.*
 
 <p align="center">
-  <img src="figures/batch_loss.png" width="80%">
+  <img src="figures/batch_loss.png" width="50%">
 </p>
 
 *Effect of batch size on validation loss.*
