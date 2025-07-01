@@ -1,4 +1,4 @@
-# Embedded Topic Model (ETM) for Document Analysis
+# Embedded Topic Model for Document Analysis
 
 ## Description
 
