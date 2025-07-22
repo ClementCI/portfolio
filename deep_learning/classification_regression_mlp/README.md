@@ -41,7 +41,7 @@ A custom MLP implementation is used to investigate how model architecture, train
 *Classification learning curves for two datasets (Case 1 balanced and simple, Case 3 more complex and imbalanced) using two different hidden layer sizes.*
 
 <p align="center">
-  <img src="figures/surface_approx.png" width="90%">
+  <img src="figures/surface_approx.png" width="80%">
 </p>
 
 *Function approximation for different MLP architectures.*
