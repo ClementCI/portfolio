@@ -35,10 +35,10 @@ A custom MLP implementation is used to investigate how model architecture, train
 *Accuracy over epochs for increasing hidden sizes in classification.*
 
 <p align="center">
-  <img src="figures/acc_hidden_size.png" width="90%">
+  <img src="figures/imbalance.png" width="90%">
 </p>
 
-*Classification learning curves for two datasets (Case 1 balanced and simple, Case 2 more complex and imbalanced) using two different hidden layer sizes.*
+*Classification learning curves for two datasets (Case 1 balanced and simple, Case 3 more complex and imbalanced) using two different hidden layer sizes.*
 
 <p align="center">
   <img src="figures/surface_approx.png" width="90%">
