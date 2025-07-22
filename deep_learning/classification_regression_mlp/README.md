@@ -47,7 +47,7 @@ A custom MLP implementation is used to investigate how model architecture, train
 *Function approximation for different MLP architectures.*
 
 <p align="center">
-  <img src="figures/function_approx.png" width="90%">
+  <img src="figures/function_approx.png" width="95%">
 </p>
 
 *Function approximation performance for different MLP architectures.*
