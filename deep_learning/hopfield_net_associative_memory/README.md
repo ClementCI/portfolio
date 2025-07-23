@@ -30,7 +30,7 @@ Patterns were stored and recalled using both synchronous (little model) and asyn
   <img src="figures/energy.png" width="80%">
 </p>
 
-*Energy descent over updates for symmetric and random matrices.*
+*Energy descent over updates for random and symmetric weight matrices.*
 
 <p align="center">
   <img src="figures/restoration_vs_noise.png" width="80%">
