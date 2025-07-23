@@ -23,7 +23,7 @@ Our experiments focus on the MNIST dataset, where we assess reconstruction quali
 
 - **Visual Representations**: Receptive fields showed how RBM hidden units became selective to distinct image patterns (e.g., digit strokes), validating their interpretability.
 
-- **Classification Performance**: A simple classifier on top of the learned representations achieved **88.11%** training and **88.21%** test accuracy — without any fine-tuning. This highlights the richness of the representations even in an unsupervised setup.
+- **Classification Performance**: A simple classifier on top of the learned representations achieved **88.11%** training and **88.21%** test accuracy without any fine-tuning. This highlights the richness of the representations even in an unsupervised setup.
 
 - **Generative Power**: DBNs successfully synthesized recognizable digits using Gibbs sampling in the top layer. While early iterations produced noisy results, convergence around 200–400 iterations yielded coherent digit shapes for all classes.
 
@@ -68,7 +68,7 @@ Our experiments focus on the MNIST dataset, where we assess reconstruction quali
 ## Datasets
 
 - **MNIST dataset** (binarized)
-- No external loaders used — handled directly in NumPy
+- No external loaders used, handled directly in NumPy
 - Input size: 784 (28×28 pixels)
 
 ## File Structure
