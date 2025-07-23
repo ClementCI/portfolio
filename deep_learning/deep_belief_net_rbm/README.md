@@ -7,7 +7,7 @@ This project implements a **Deep Belief Network (DBN)** composed of stacked **Re
 The implementation is based on Hinton et al.'s foundational work:  
 *A Fast Learning Algorithm for Deep Belief Nets* (2006).  
 
-Our experiments focus on the MNIST dataset, where we assess reconstruction quality, training stability, classification accuracy, and generative capacity. We analyze how design choices—such as hidden layer sizes, learning rates, and momentum—impact learning dynamics.
+Our experiments focus on the MNIST dataset, where we assess reconstruction quality, training stability, classification accuracy, and generative capacity. We analyze how design choices, such as hidden layer sizes, learning rates, and momentum—impact learning dynamics.
 
 <p align="center">
   <img src="figures/scheme.png" width="40%">
