@@ -7,10 +7,10 @@ This project implements a **Deep Belief Network (DBN)** composed of stacked **Re
 The implementation is based on Hinton et al.'s foundational work:  
 *A Fast Learning Algorithm for Deep Belief Nets* (2006).  
 
-Our experiments focus on the MNIST dataset, where we assess reconstruction quality, training stability, classification accuracy, and generative capacity. We analyze how design choices—such as hidden layer sizes, learning rates, and momentum—impact learning dynamics.
+Our experiments focus on the MNIST dataset, where we assess reconstruction quality, training stability, classification accuracy, and generative capacity. We analyze how design choices (such as hidden layer sizes, learning rates, and momentum) impact learning dynamics.
 
 <p align="center">
-  <img src="figures/scheme.png" width="90%">
+  <img src="figures/scheme.png" width="40%">
 </p>
 
 *Deep belief network architecture (source: Hinton et al.).*
@@ -23,7 +23,7 @@ Our experiments focus on the MNIST dataset, where we assess reconstruction quali
 
 - **Visual Representations**: Receptive fields showed how RBM hidden units became selective to distinct image patterns (e.g., digit strokes), validating their interpretability.
 
-- **Classification Performance**: A simple classifier on top of the learned representations achieved **88.11%** training and **88.21%** test accuracy — without any fine-tuning. This highlights the richness of the representations even in an unsupervised setup.
+- **Classification Performance**: A simple classifier on top of the learned representations achieved **88.11%** training and **88.21%** test accuracy without any fine-tuning. This highlights the richness of the representations even in an unsupervised setup.
 
 - **Generative Power**: DBNs successfully synthesized recognizable digits using Gibbs sampling in the top layer. While early iterations produced noisy results, convergence around 200–400 iterations yielded coherent digit shapes for all classes.
 
@@ -32,13 +32,13 @@ Our experiments focus on the MNIST dataset, where we assess reconstruction quali
 ### RBM for recognizing MNIST digits
 
 <p align="center">
-  <img src="figures/loss_rbm.png" width="90%">
+  <img src="figures/loss_rbm.png" width="50%">
 </p>
 
 *Reconstruction loss during training for RBMs with various hidden sizes.*
 
 <p align="center">
-  <img src="figures/representation.png" width="90%">
+  <img src="figures/representation.png" width="50%">
 </p>
 
 *Receptive fields of 25 hidden units across training iterations. Patterns emerge and specialize over time.*
@@ -46,13 +46,13 @@ Our experiments focus on the MNIST dataset, where we assess reconstruction quali
 ### Towards deep networks: greedy layer-wise pretraining
 
 <p align="center">
-  <img src="figures/loss_dbn.png" width="90%">
+  <img src="figures/loss_dbn.png" width="50%">
 </p>
 
 *Loss curves from unsupervised training of each RBM layer in the DBN stack.*
 
 <p align="center">
-  <img src="figures/generation.gif" width="90%">
+  <img src="figures/generation.gif" width="80%">
 </p>
 
 *Digit generation over alternating Gibbs sampling steps in the top RBM layer.*
@@ -68,7 +68,7 @@ Our experiments focus on the MNIST dataset, where we assess reconstruction quali
 ## Datasets
 
 - **MNIST dataset** (binarized)
-- No external loaders used — handled directly in NumPy
+- No external loaders used, handled directly in NumPy
 - Input size: 784 (28×28 pixels)
 
 ## File Structure

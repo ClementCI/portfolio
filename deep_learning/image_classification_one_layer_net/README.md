@@ -24,7 +24,8 @@ Experiments include:
 | Setting 1                | 0.1               | 0.0        | 43.43%  | 28.42%         |
 | **Setting 2**                      | **0.001**                | **0.0**        | **45.54%**   | **39.92%**         |
 | Setting 3           | 0.001               | 0.1      | 44.73%  | 39.40%         |
-| Setting 4           | 0.001               | 1      | 40.14%  | 37.38%         |
+| Setting 4           | 0.001               | 1      | 40.14%  | 37.38%         |4
+
 *Final classification accuracy across various training configurations (without additional optimization techniques).*
 
 - **Optimization Strategies**: Using a larger training set, learning rate decay, grid-search optimization of hyperparameters, and light data augmentation further improved generalization and narrowed the train/test accuracy gap.
@@ -48,7 +49,7 @@ Experiments include:
 *Training and validation losses across settings with different learning rates and regularization.*
 
 <p align="center">
-  <img src="figures/weight_matrix.png" width="80%">
+  <img src="figures/weight_matrix.png" width="60%">
 </p>
 
 *Visualization of learned weight matrices: clearer features emerge with increased regularization.*
@@ -90,23 +91,21 @@ Experiments include:
 
 ## Methodology
 
-- **Forward Pass**: Scores are computed as \( s = Wx + b \), followed by Softmax or Sigmoid.
+- **Forward Pass**: Scores are computed as  $s = Wx + b$, followed by Softmax or Sigmoid.
   
 - **Loss Functions**:
   - Cross-entropy with Softmax:
-    $$
-    \text{CE} = -\log P(y \mid x)
-    $$
+    
+    $\text{CE} = -\log P(y \mid x)$
+    
   - MBCE with Sigmoid:
-    $$
-    \text{MBCE} = - \frac{1}{K} \sum_{k=1}^{K} \left[ y_k \log(p_k) + (1 - y_k) \log(1 - p_k) \right]
-    $$
+    
+    $\text{MBCE} = - \frac{1}{K} \sum_{k=1}^{K} \left[ y_k \log(p_k) + (1 - y_k) \log(1 - p_k) \right]$
 
-- **Gradient Computation**: 
+- **Gradient Computation**:
+  
   Verified using numerical gradients and PyTorch's automatic differentiation:
-  $$
-  \frac{\partial \mathcal{L}}{\partial W}, \quad \frac{\partial \mathcal{L}}{\partial b}
-  $$
+  $\frac{\partial \mathcal{L}}{\partial W}, \quad \frac{\partial \mathcal{L}}{\partial b}$
 
 - **Training**:
   - Mini-batch gradient descent

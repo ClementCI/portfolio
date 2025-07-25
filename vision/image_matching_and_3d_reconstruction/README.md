@@ -18,34 +18,31 @@ This study demonstrates how model selection, feature distribution, and noise aff
 ## Visual Insights
 
 <p align="center">
-  <img src="figures/outliers.png" width="90%">
+  <img src="figures/outliers.png" width="50%">
 </p>
+
 *Homography error VS number of outliers with and without RANSAC.*
 
 <p align="center">
-  <img src="figures/homography.png" width="90%">
-</p>
-<p align="center">
-  <img src="figures/homography2.png" width="90%">
+  <img src="figures/homography.png" width="40%">
+  <img src="figures/homography2.png" width="40%">
 </p>
 
 *Image matching using homographies and RANSAC.*
 
 
 <p align="center">
-  <img src="figures/Fmatrix.png" width="90%">
+  <img src="figures/Fmatrix.png" width="60%">
 </p>
 <p align="center">
-  <img src="figures/Fmatrix2.png" width="90%">
+  <img src="figures/Fmatrix2.png" width="60%">
 </p>
 
 *Image matching using fundamental matrices and RANSAC.*
 
 <p align="center">
-  <img src="figures/3d_recon.png" width="90%">
-</p>
-<p align="center">
-  <img src="figures/3d_recon2.png" width="90%">
+  <img src="figures/3d_recon.png" width="40%">
+  <img src="figures/3d_recon2.png" width="40%">
 </p>
 
 *3D reconstruction using triangulated points and a recovered fundamental matrix.*

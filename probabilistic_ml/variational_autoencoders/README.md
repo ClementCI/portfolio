@@ -30,22 +30,25 @@ Importantly, we compared the effect of using **Kullback-Leibler divergence (KL)*
 
 ### Image Generation
 <p align="center">
-  <img src="figures/image_in.png" width="45%" style="margin-right: 5%;">
-  <img src="figures/image_recon.png" width="45%">
+  <img src="figures/image_in.png" width="35%" style="margin-right: 5%;">
+  <img src="figures/image_recon.png" width="35%">
 </p>
+
 *Input image from the test dataset (left) and its reconstruction (right).*
 
 <p align="center">
-  <img src="figures/noise1.png" width="45%" style="margin-right: 5%;">
-  <img src="figures/noise2.png" width="45%">
+  <img src="figures/noise1.png" width="35%" style="margin-right: 5%;">
+  <img src="figures/noise2.png" width="35%">
 </p>
+
 *Images generated from Gaussian noise by the decoder.*
 
 ### Latent Space
 <p align="center">
-  <img src="figures/kl.png" width="45%" style="margin-right: 5%;">
-  <img src="figures/mmd.png" width="45%">
+  <img src="figures/kl.png" width="40%" style="margin-right: 5%;">
+  <img src="figures/mmd.png" width="40%">
 </p>
+
 *Latent space structure using KL (left) and MMD (right) in the loss function.*
 
 ## Features

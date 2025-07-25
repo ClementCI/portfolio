@@ -30,7 +30,7 @@ Patterns were stored and recalled using both synchronous (little model) and asyn
   <img src="figures/energy.png" width="80%">
 </p>
 
-*Energy descent over updates for symmetric and random matrices.*
+*Energy descent over updates for random and symmetric weight matrices.*
 
 <p align="center">
   <img src="figures/restoration_vs_noise.png" width="80%">
@@ -39,13 +39,13 @@ Patterns were stored and recalled using both synchronous (little model) and asyn
 *Restoration rate across increasing noise levels for different recall strategies.*
 
 <p align="center">
-  <img src="figures/capacity.png" width="80%">
+  <img src="figures/capacity.png" width="50%">
 </p>
 
 *Proportion of stable patterns as a function of the number of stored patterns in a 100-unit network.*
 
 <p align="center">
-  <img src="figures/capacity_biased.png" width="80%">
+  <img src="figures/capacity_biased.png" width="50%">
 </p>
 
 *Proportion of stable **biased** patterns as a function of the number of stored patterns in a 100-unit network.*
@@ -82,21 +82,15 @@ Patterns were stored and recalled using both synchronous (little model) and asyn
 
 - **Learning Rule** (Hebbian):
 
-  $$
-  w_{ij} = \frac{1}{N}\sum_{\mu=1}^{P} x_i^\mu x_j^\mu
-  $$
+  $w_{ij} = \frac{1}{N}\sum_{\mu=1}^{P} x_i^\mu x_j^\mu$
 
 - **Recall Rule**:
 
-  $$
-  x_i \leftarrow \text{sign} \left( \sum_j w_{ij} x_j \right)
-  $$
+  $x_i \leftarrow \text{sign} \left( \sum_j w_{ij} x_j \right)$
 
 - **Energy Function**:
 
-  $$
-  E = - \sum_{i} \sum_j w_{ij} x_i x_j
-  $$
+  $E = - \sum_{i} \sum_j w_{ij} x_i x_j$
 
 - **Sparse Learning**: Adjusted rule using mean activity $\rho$ and a bias threshold $\theta$
 

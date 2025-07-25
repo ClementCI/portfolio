@@ -30,11 +30,13 @@ The CNN was trained on the **CIFAR-10** dataset, and different architectures and
 | Arch. 2      | 4               | 10           | 50                 | 61.61%             |   56.3%            | 56.41%   |
 | Arch. 3      | 8               | 40           | 50                 | **63.47%**             | **58.70%**              | **58.59%**   |
 | Arch. 4      | 16              | 160          | 50                 | 62.98%             | 57.10%              | 56.44%%   |
+
 *Performance with four different architectures after short training runs.*
 
 | Architecture | Width (nf) | Hidden (nh) | Training Acc | Validation Acc | Test Acc | 
 |--------------|------------|-------------|---------------|----------------|----------| 
 | Final model | 60 | 300 | 89.19% | 70.80% | 69.13% |
+
 *Performance with the best-performing model (including learning rate decay, label smoothing, weight decay, and offline data augmentation) after a longer training run.*
 
 

@@ -17,25 +17,22 @@ Two versions of the Hough transform are included:
 ## Visual Insights
 
 <p align="center">
-  <img src="figures/edges_best.png" width="90%">
+  <img src="figures/edges_best.png" width="60%">
 </p>
 
 *Detected edges overlaid on the image using differential geometry descriptors.*
 
 
 <p align="center">
-  <img src="figures/triangle_lines.png" width="90%">
-</p>
-
-<p align="center">
-  <img src="figures/hough_space.png" width="90%">
+  <img src="figures/triangle_lines.png" width="25%">
+  <img src="figures/hough_space.png" width="40%">
 </p>
 
 *Detected lines overlaid on a toy image (top), and corresponding points in the Hough space (bottom).*
 
 
 <p align="center">
-  <img src="figures/final_lines.png" width="90%">
+  <img src="figures/final_lines.png" width="80%">
 </p>
 
 *Detected lines overlaid on the image using Hough transform for two different accumulator incrementation function (the improved version taking into account gradient alignment).*
