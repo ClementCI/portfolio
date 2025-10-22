@@ -333,100 +333,99 @@ class ConvNeXtBlock(nn.Module):
     def __init__(self, dim, drop_path=0.0, layer_scale_init_value=1e-6, expansion=4, kernel_size=7):
         super().__init__()
         # Depthwise conv
-        self.dw_conv = nn.Conv2d(dim, dim, kernel_size=kernel_size, padding=kernel_size//2,
-                                 groups=dim, bias=True)
-        # LayerNorm applied on channels-last: we'll permute before/after
+        self.dw_conv = nn.Conv2d(
+            dim, dim, kernel_size=kernel_size, padding=kernel_size // 2,
+            groups=dim, bias=True
+        )
+
+        # LayerNorm in channels-last format
         self.ln = nn.LayerNorm(dim, eps=1e-6)
-        # Pointwise MLP (1x1 convs)
+
+        # Pointwise MLP (two 1x1 convs)
         hidden_dim = int(dim * expansion)
         self.pw = nn.Sequential(
             nn.Conv2d(dim, hidden_dim, kernel_size=1),
             nn.GELU(),
             nn.Conv2d(hidden_dim, dim, kernel_size=1)
         )
-        # Optional layer scale (small learnable multiplier per channel)
-        if layer_scale_init_value > 0:
-            self.layer_scale = nn.Parameter(layer_scale_init_value * torch.ones((dim)), requires_grad=True)
-        else:
-            self.layer_scale = None
 
-        self.drop_path = drop_path  # not implementing stochastic depth here; placeholder
+        # Layer scale parameter γ
+        self.layer_scale = (
+            nn.Parameter(layer_scale_init_value * torch.ones(dim))
+            if layer_scale_init_value > 0 else None
+        )
 
     def forward(self, x):
-        # x: [B, C, H, W]
-        identity = x
-
-        # Depthwise conv
-        x = self.dw_conv(x)  # still [B, C, H, W]
-
-        # Convert to channels-last for LayerNorm: [B, H, W, C]
-        x = x.permute(0, 2, 3, 1)
-        x = self.ln(x)  # LayerNorm on last dim
-        # Back to NCHW
-        x = x.permute(0, 3, 1, 2)
-
-        # Pointwise MLP
-        x = self.pw(x)  # [B, C, H, W]
-
-        # Layer scale
+        residual = x
+        x = self.dw_conv(x)                       # depthwise
+        x = x.permute(0, 2, 3, 1)                # BCHW → BHWC
+        x = self.ln(x)
+        x = x.permute(0, 3, 1, 2)                # back to BCHW
+        x = self.pw(x)                           # pointwise MLP
         if self.layer_scale is not None:
-            # shape [C] -> [1, C, 1, 1]
             x = x * self.layer_scale.view(1, -1, 1, 1)
-
-        # Residual
-        x = identity + x
-        return x
-
-# --------- ConvNeXt Network ---------
+        return residual + x                      # residual
+        
+# --------- ConvNeXt Tiny Network ---------
 class ConvNeXt(nn.Module):
-    def __init__(self, in_ch=3, depths=None, dims=None, num_classes=10):
+    def __init__(self, in_ch=3, num_classes=10):
         super().__init__()
-        # Default config similar scale to ResNet in this repo
-        if depths is None:
-            depths = [N_RES, N_RES, N_RES]  # number of blocks per stage
-        if dims is None:
-            dims = [16, 32, 64]
 
-        assert len(depths) == len(dims)
+        # ConvNeXt-Tiny configuration
+        dims = [96, 192, 384, 768]
+        depths = [3, 3, 9, 3]
 
-        # Stem: small conv
+        # Stem: Patchify (Conv stride 4)
         self.stem = nn.Sequential(
-            nn.Conv2d(in_ch, dims[0], kernel_size=3, stride=1, padding=1, bias=False),
-            nn.BatchNorm2d(dims[0]),
-            nn.ReLU(inplace=True)
+            nn.Conv2d(in_ch, dims[0], kernel_size=4, stride=4),
+            nn.LayerNorm(dims[0], eps=1e-6)
         )
 
         # Stages
         self.stages = nn.ModuleList()
         in_dim = dims[0]
-        for i, (depth, dim) in enumerate(zip(depths, dims)):
-            blocks = []
-            # First block in stage may be identity (same spatial) or downsample if not first stage
-            if i > 0:
-                # Downsample by 2 using conv stride 2 to reduce H/W
-                down = nn.Sequential(
-                    nn.Conv2d(in_dim, dim, kernel_size=2, stride=2, bias=False),
-                    nn.BatchNorm2d(dim),
-                )
-                blocks.append(down)
-            # Append ConvNeXt blocks
-            for _ in range(depth):
-                blocks.append(ConvNeXtBlock(dim))
-            self.stages.append(nn.Sequential(*blocks))
-            in_dim = dim
 
-        # Global pooling + classifier
-        self.pool = nn.AdaptiveAvgPool2d(1)
-        self.fc = nn.Linear(in_dim, num_classes)
+        for i in range(len(depths)):
+            blocks = [ConvNeXtBlock(dims[i]) for _ in range(depths[i])]
+            stage = nn.Sequential(*blocks)
+            self.stages.append(stage)
+
+            # Downsample between stages (except after last one)
+            if i < len(depths) - 1:
+                down = nn.Sequential(
+                    nn.LayerNorm(dims[i], eps=1e-6),
+                    nn.Conv2d(dims[i], dims[i + 1], kernel_size=2, stride=2)
+                )
+                self.stages.append(down)
+
+        # Final normalization + head
+        self.norm = nn.LayerNorm(dims[-1], eps=1e-6)
+        self.head = nn.Linear(dims[-1], num_classes)
 
     def forward(self, x):
-        # x: [B, 3, H, W]
+        # Stem
         x = self.stem(x)
-        for stage in self.stages:
-            x = stage(x)
-        x = self.pool(x)      # [B, C, 1, 1]
-        x = x.view(x.size(0), -1)
-        return self.fc(x)
+        x = x.permute(0, 2, 3, 1)  # [B, H, W, C] for first LN
+
+        # Alternate stages and downsamples
+        for layer in self.stages:
+            if isinstance(layer, nn.Sequential) and isinstance(layer[0], ConvNeXtBlock):
+                # stage of ConvNeXt blocks
+                x = x.permute(0, 3, 1, 2)  # BHWC → BCHW
+                x = layer(x)
+                x = x.permute(0, 2, 3, 1)  # back to BHWC
+            else:
+                # downsampling layer
+                x = layer(x.permute(0, 3, 1, 2))
+                x = x.permute(0, 2, 3, 1)
+
+        # Global pooling
+        x = x.mean(dim=(1, 2))      # [B, C]
+
+        # Final norm + head
+        x = self.norm(x)
+        x = self.head(x)
+        return x
 
 # ==========================================================
 #  Training
@@ -444,7 +443,7 @@ def train():
         model = ResNet()
         model.apply(init_weights_He_normal)
     elif MODEL == "ConvNeXt":
-        model = ConvNeXt(num_classes=100 if DATASET == 'CIFAR100' else 10)
+        model = ConvNeXt()
         model.apply(init_weights_He_normal)
     else:
         raise ValueError(f"Unknown MODEL {MODEL}")
