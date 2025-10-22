@@ -575,7 +575,6 @@ def apply_cfg(cfg):
             'MODEL':              cfg['MODEL'],
             'SHORTCUT':           cfg['SHORTCUT'],
             'SE_ACTIVATE':        cfg['SE_ACTIVATE'],
-            'CBAM_ACTIVATE':      cfg['CBAM_ACTIVATE'],
             'LR':                 cfg['LR'],
             'N_RES':              cfg['N_RES'],
             'WEIGHT_DECAY':       cfg['WEIGHT_DECAY'],
@@ -585,7 +584,9 @@ def apply_cfg(cfg):
             'EPOCHS':             cfg['EPOCHS'],
             'OPTIMIZER':          cfg['OPTIMIZER'],
             'EXP_ID':             cfg['id'],
-            'DATASET':            cfg['DATASET']
+            'DATASET':            cfg['DATASET'],
+            'ADD_NOISE_IN_LABELS':cfg['ADD_NOISE_IN_LABELS'],
+            'LOSS_FUNCTION':      cfg['LOSS_FUNCTION']
         })
     elif cfg['MODEL'] == 'VGG': # update VGG-related parameters
         globals().update({
@@ -595,19 +596,44 @@ def apply_cfg(cfg):
             'PATCH_NF':           cfg['PATCH_NF'],
             'VGG_BLOCKS':         cfg['VGG_BLOCKS'],
             'FC_DIM':             cfg['FC_DIM'],
-            'LABEL_SMOOTH':       cfg['LABEL_SMOOTH'],
             'GLOBAL_AVG_POOL':    cfg['GLOBAL_AVG_POOL'],
             'DROPOUT':            cfg['DROPOUT'],
-            'DROPOUT_VAR':        cfg['DROPOUT_VAR'],
+            'DROPOUT_VAR':        cfg['DROPOUT'],
             'USE_BN':             cfg['USE_BN'],
             'REMOVE_LAST_MAXPOOL':cfg['REMOVE_LAST_MAXPOOL'],
             'CONV_DOWN_SAMP':     cfg['CONV_DOWN_SAMP'],
             'WEIGHT_DECAY':       cfg['WEIGHT_DECAY'],
             'AUGMENT':            cfg['AUGMENT'],
+            'LABEL_SMOOTH':       cfg['LABEL_SMOOTH'],
             'SCHEDULER':          cfg['SCHEDULER'],
             'EPOCHS':             cfg['EPOCHS'],
             'OPTIMIZER':          cfg['OPTIMIZER'],
             'EXP_ID':             cfg['id'],
+            'ADD_NOISE_IN_LABELS': cfg['ADD_NOISE_IN_LABELS'],
+            'LOSS_FUNCTION': cfg['LOSS_FUNCTION']
+        })
+    elif cfg['MODEL'] == 'ConvNeXt': # update ConvNeXt-related parameters
+        globals().update({
+            'MODEL': cfg['MODEL'],
+            'DATASET': cfg['DATASET'],
+            'LR': cfg['LR'],
+            'WEIGHT_DECAY': cfg['WEIGHT_DECAY'],
+            'AUGMENT': cfg['AUGMENT'],
+            'LABEL_SMOOTH': cfg['LABEL_SMOOTH'],
+            'OPTIMIZER': cfg['OPTIMIZER'],
+            'EXP_ID': cfg['id'],
+            'ADD_NOISE_IN_LABELS': cfg['ADD_NOISE_IN_LABELS'],
+            'DEPTHS': cfg['DEPTHS'],
+            'DIMS': cfg['DIMS'],
+            'DROP_PATH_RATE': cfg['DROP_PATH_RATE'],
+            'LOSS_FUNCTION': cfg['LOSS_FUNCTION'],
+            'SCHEDULER': cfg['SCHEDULER'],
+            'MILESTONES': cfg.get('MILESTONES', [80, 120]),
+            'GAMMA': cfg.get('GAMMA', 0.1),
+            'EPOCHS': cfg['EPOCHS'],
+            'LOSS': cfg.get('LOSS', 'CE'),
+            'ALPHA': cfg.get('ALPHA', 0.1),
+            'BETA': cfg.get('BETA', 1.0),
         })
     globals()['ETA_MIN'], globals()['ETA_MAX'] = cfg['LR']/10, cfg['LR']
 
@@ -641,4 +667,9 @@ if __name__=="__main__":
         apply_cfg(cfg)
         print(cfg)
         train()
-   
+
+    # ConvNeXt configurations
+    for cfg in EXPERIMENTS_CONVNEXT:
+        apply_cfg(cfg)
+        print(cfg)
+        train()
