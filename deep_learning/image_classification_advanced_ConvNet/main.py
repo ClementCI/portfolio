@@ -10,7 +10,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
 
-from torch.optim.lr_scheduler import CyclicLR, CosineAnnealingWarmRestarts, LinearLR, StepLR, LambdaLR
+from torch.optim.lr_scheduler import CyclicLR, CosineAnnealingWarmRestarts, LinearLR, StepLR, LambdaLR, MultiStepLR
 
 from utils import get_lr, plot_history, loaders, init_weights_He_normal, init_weights_He_uniform, custom_lr_schedule, set_seed
 from config import EXPERIMENTS_VGG, EXPERIMENTS_RES, EXPERIMENTS_SE_RES, EXPERIMENTS_CBAM_RES, EXPERIMENTS_CONVNEXT
@@ -43,7 +43,7 @@ CBAM_ACTIVATE      = False
 REDUCTION          = 8
 MIN_DIM_SE         = 4
 
-# --------- Common params ---------
+# Common params
 MODEL              = 'VGG'
 DATASET            = 'CIFAR10'
 LR                 = 3e-4
@@ -61,6 +61,10 @@ LABEL_SMOOTH       = 0.1
 AUGMENT            = True
 SCHEDULER          = "CyclicLR"
 OPTIMIZER          = "Adam"
+ADD_NOISE_IN_LABELS= False
+LOSS_FUNCTION      = "SCE" # options: "CE" (Cross-Entropy), "SCE" (Symmetric Cross-Entropy)
+MILESTONES         = [80,120]
+GAMMA              = 0.1
 
 EVAL_EVERY         = STEP0 // 2
 
@@ -462,8 +466,16 @@ def train():
             else:
                 decay.append(param)
         
-    # --------- Criterion and Optimizer ---------
-    criterion = nn.CrossEntropyLoss(label_smoothing=LABEL_SMOOTH)
+    # Criterion and Optimizer
+    criterion = 100
+    if LOSS_FUNCTION == "CE":
+        criterion = nn.CrossEntropyLoss(label_smoothing=LABEL_SMOOTH)
+    elif LOSS_FUNCTION == "SCE":
+        criterion = SCELoss(
+            alpha=0.1,
+            beta=1.0,
+            num_classes=(100 if DATASET == "CIFAR100" else 10)
+        )
     if OPTIMIZER == "Adam":
         optimizer = optim.AdamW([{'params': no_decay, 'weight_decay': 0.0}, 
                                  {'params': decay, 'weight_decay': WEIGHT_DECAY}], lr=LR)
@@ -471,7 +483,7 @@ def train():
         optimizer = optim.SGD([{'params': no_decay, 'weight_decay': 0.0}, 
                                {'params': decay, 'weight_decay': WEIGHT_DECAY}],
                                lr=LR, momentum=MOMENTUM)
-                                   
+           
     # --------- Scheduler ---------
     if SCHEDULER == "Decay":
         sched = LambdaLR(optimizer, lr_lambda=custom_lr_schedule) # custom decay
@@ -510,7 +522,8 @@ def train():
             loss = criterion(logits, labels)
             loss.backward()
             optimizer.step()
-            sched.step()
+            if SCHEDULER not in ["MultiStepLR", "StepLR"]:
+                sched.step()
 
             if step % EVAL_EVERY == 0:
                 acc = (logits.argmax(1)==labels).float().mean().item()
@@ -531,6 +544,9 @@ def train():
                     best_val = v_acc
                     torch.save(model.state_dict(), run_dir/'best.pth')
             step += 1
+
+    if SCHEDULER in ["MultiStepLR", "StepLR"]:
+        sched.step()
 
     model.load_state_dict(torch.load(run_dir/'best.pth'))
     test_loss,test_acc = evaluate(model,test_loader,criterion,device)
