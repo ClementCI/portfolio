@@ -166,3 +166,63 @@ EXPERIMENTS_CBAM_RES =  [
         SCHEDULER="Decay", EPOCHS=60,
         LR=0.1, OPTIMIZER="SGD", DATASET='CIFAR100'),
 ]
+
+EXPERIMENTS_CONVNEXT = [
+    dict(
+        id="ConvNeXt_baseline",
+        MODEL="ConvNeXt", DATASET="CIFAR10",
+        OPTIMIZER="Adam", LR=0.005, WEIGHT_DECAY=0.00,
+        SCHEDULER="CyclicLR", EPOCHS=40,
+        AUGMENT=True, LABEL_SMOOTH=0.1,
+        DEPTHS=[2,2,6,2], DIMS=[64,128,256,512],
+        DROP_PATH_RATE=0.2, ADD_NOISE_IN_LABELS=True,
+        LOSS_FUNCTION="CE"),
+
+    dict(
+        id="ConvNeXt_baseline_2",
+        MODEL="ConvNeXt", DATASET="CIFAR10",
+        OPTIMIZER="Adam", LR=0.005, WEIGHT_DECAY=1e-2,
+        SCHEDULER="CyclicLR", EPOCHS=40,
+        AUGMENT=True, LABEL_SMOOTH=0.0,
+        DEPTHS=[2, 2, 6, 2], DIMS=[64, 128, 256, 512],
+        DROP_PATH_RATE=0.2, ADD_NOISE_IN_LABELS=True,
+        LOSS_FUNCTION="SCE"),
+    
+     dict(
+          id="ConvNeXt_SCE_stepLR_CE",
+          MODEL="ConvNeXt", DATASET="CIFAR10",
+          OPTIMIZER="Adam",
+          LR=3e-4,
+          WEIGHT_DECAY=1e-4,
+          SCHEDULER="MultiStepLR",
+          MILESTONES=[80, 120],
+          GAMMA=0.1,
+          EPOCHS=100,
+          AUGMENT=True,
+          LOSS_FUNCTION="CE",
+          ALPHA=0.1,
+          BETA=1.0,
+          DEPTHS=[2,2,6,2], DIMS=[64,128,256,512],
+          DROP_PATH_RATE=0.2,
+          LABEL_SMOOTH=0.0,
+          ADD_NOISE_IN_LABELS=True),
+    
+     dict(
+          id="ConvNeXt_SCE_stepLR_SCE",
+          MODEL="ConvNeXt", DATASET="CIFAR10",
+          OPTIMIZER="Adam",
+          LR=3e-4,
+          WEIGHT_DECAY=1e-4,
+          SCHEDULER="MultiStepLR",
+          MILESTONES=[80, 120],
+          GAMMA=0.1,
+          EPOCHS=100,
+          AUGMENT=True,
+          LOSS_FUNCTION="SCE",
+          ALPHA=0.1,
+          BETA=1.0,
+          DEPTHS=[2,2,6,2], DIMS=[64,128,256,512],
+          DROP_PATH_RATE=0.2,
+          LABEL_SMOOTH=0.0,
+          ADD_NOISE_IN_LABELS=True)
+]
