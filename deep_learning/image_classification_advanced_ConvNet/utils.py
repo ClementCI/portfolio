@@ -119,7 +119,6 @@ def corrupt_subset(subset, noise_ratio, num_classes):
             choices.remove(orig)
             subset.dataset.targets[i] = random.choice(choices)
 
-
 # -------- SCE Loss --------
 class SCELoss(nn.Module):
     """
