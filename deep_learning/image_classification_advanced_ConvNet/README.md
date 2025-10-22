@@ -2,7 +2,7 @@
 
 ## Description
 
-This project investigates the training of convolutional neural networks (CNNs) **from scratch** on popular image classification benchmarks, including **CIFAR-10**, **CIFAR-100**, and **ImageNette**. We begin with a simple **VGG-style** baseline and progressively enhance the network using:
+This project investigates the training of convolutional neural networks (CNNs) **from scratch** on popular image classification benchmarks, including **CIFAR-10**, **CIFAR-100**, and **ImageNette** (subset of ImageNet). We begin with a simple **VGG-style** baseline and progressively enhance the network using:
 
 - Regularization strategies: dropout, weight decay, label smoothing
 - Architectural improvements: batch normalization, global average pooling
