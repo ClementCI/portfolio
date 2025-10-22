@@ -328,6 +328,16 @@ class ResNet(nn.Module):
 # ==========================================================
 #  ConvNeXt
 # ==========================================================
+# --------- Wrapper ---------
+class LayerNorm2d(nn.Module):
+    def __init__(self, num_channels, eps=1e-6):
+        super().__init__()
+        self.ln = nn.LayerNorm(num_channels, eps=eps)
+
+    def forward(self, x):
+        # Convert BCHW → BHWC for LayerNorm, then back
+        return self.ln(x.permute(0, 2, 3, 1)).permute(0, 3, 1, 2)
+        
 # --------- ConvNeXt Block ---------
 class ConvNeXtBlock(nn.Module):
     def __init__(self, dim, drop_path=0.0, layer_scale_init_value=1e-6, expansion=4, kernel_size=7):
@@ -378,7 +388,7 @@ class ConvNeXt(nn.Module):
         # Stem: Patchify (Conv stride 4)
         self.stem = nn.Sequential(
             nn.Conv2d(in_ch, dims[0], kernel_size=4, stride=4),
-            nn.LayerNorm(dims[0], eps=1e-6)
+            LayerNorm2d(dims[0])
         )
 
         # Stages
@@ -393,7 +403,7 @@ class ConvNeXt(nn.Module):
             # Downsample between stages (except after last one)
             if i < len(depths) - 1:
                 down = nn.Sequential(
-                    nn.LayerNorm(dims[i], eps=1e-6),
+                    LayerNorm2d(dims[i]),
                     nn.Conv2d(dims[i], dims[i + 1], kernel_size=2, stride=2)
                 )
                 self.stages.append(down)
@@ -407,17 +417,11 @@ class ConvNeXt(nn.Module):
         x = self.stem(x)
         x = x.permute(0, 2, 3, 1)  # [B, H, W, C] for first LN
 
-        # Alternate stages and downsamples
+        # Stages
         for layer in self.stages:
-            if isinstance(layer, nn.Sequential) and isinstance(layer[0], ConvNeXtBlock):
-                # stage of ConvNeXt blocks
-                x = x.permute(0, 3, 1, 2)  # BHWC → BCHW
-                x = layer(x)
-                x = x.permute(0, 2, 3, 1)  # back to BHWC
-            else:
-                # downsampling layer
-                x = layer(x.permute(0, 3, 1, 2))
-                x = x.permute(0, 2, 3, 1)
+            x = x.permute(0, 3, 1, 2)  # BHWC → BCHW
+            x = layer(x)
+            x = x.permute(0, 2, 3, 1)  # BCHW → BHWC
 
         # Global pooling
         x = x.mean(dim=(1, 2))      # [B, C]
