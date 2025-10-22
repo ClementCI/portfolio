@@ -328,108 +328,109 @@ class ResNet(nn.Module):
 # ==========================================================
 #  ConvNeXt
 # ==========================================================
-# --------- Wrapper ---------
-class LayerNorm2d(nn.Module):
-    def __init__(self, num_channels, eps=1e-6):
+# --------- Drop Path ---------
+class DropPath(nn.Module):
+    def __init__(self, drop_prob=0.0):
         super().__init__()
-        self.ln = nn.LayerNorm(num_channels, eps=eps)
+        self.drop_prob = drop_prob
 
     def forward(self, x):
-        # Convert BCHW → BHWC for LayerNorm, then back
-        return self.ln(x.permute(0, 2, 3, 1)).permute(0, 3, 1, 2)
-        
+        if self.drop_prob == 0.0 or not self.training:
+            return x
+        keep_prob = 1 - self.drop_prob
+        # shape = (batch, 1, 1, 1) to broadcast across H, W, C
+        shape = (x.shape[0],) + (1,) * (x.ndim - 1)
+        random_tensor = keep_prob + torch.rand(shape, dtype=x.dtype, device=x.device)
+        random_tensor.floor_()
+        return x.div(keep_prob) * random_tensor
+
 # --------- ConvNeXt Block ---------
 class ConvNeXtBlock(nn.Module):
-    def __init__(self, dim, drop_path=0.0, layer_scale_init_value=1e-6, expansion=4, kernel_size=7):
+    def __init__(self, dim, drop_path=0., layer_scale_init_value=1e-6):
         super().__init__()
-        # Depthwise conv
-        self.dw_conv = nn.Conv2d(
-            dim, dim, kernel_size=kernel_size, padding=kernel_size // 2,
-            groups=dim, bias=True
-        )
-
-        # LayerNorm in channels-last format
-        self.ln = nn.LayerNorm(dim, eps=1e-6)
-
-        # Pointwise MLP (two 1x1 convs)
-        hidden_dim = int(dim * expansion)
-        self.pw = nn.Sequential(
-            nn.Conv2d(dim, hidden_dim, kernel_size=1),
-            nn.GELU(),
-            nn.Conv2d(hidden_dim, dim, kernel_size=1)
-        )
-
-        # Layer scale parameter γ
-        self.layer_scale = (
-            nn.Parameter(layer_scale_init_value * torch.ones(dim))
-            if layer_scale_init_value > 0 else None
-        )
+        self.dwconv = nn.Conv2d(dim, dim, kernel_size=7, padding=3, groups=dim)
+        self.drop = nn.Dropout(0.1)
+        self.norm = nn.LayerNorm(dim, eps=1e-6)
+        self.pwconv1 = nn.Linear(dim, 4 * dim)
+        self.act     = nn.GELU()
+        self.pwconv2 = nn.Linear(4 * dim, dim)
+        self.gamma   = nn.Parameter(layer_scale_init_value * torch.ones((dim)),
+                                    requires_grad=True)
+        self.drop_path = DropPath(drop_path) if drop_path > 0. else nn.Identity()
 
     def forward(self, x):
-        residual = x
-        x = self.dw_conv(x)                       # depthwise
-        x = x.permute(0, 2, 3, 1)                # BCHW → BHWC
-        x = self.ln(x)
-        x = x.permute(0, 3, 1, 2)                # back to BCHW
-        x = self.pw(x)                           # pointwise MLP
-        if self.layer_scale is not None:
-            x = x * self.layer_scale.view(1, -1, 1, 1)
-        return residual + x                      # residual
-        
+        # x: (B,C,H,W) -> permute to (B,H,W,C) for LayerNorm
+        shortcut = x
+        x = self.dwconv(x)
+        x = x.permute(0, 2, 3, 1)
+        x = self.norm(x)
+        x = self.pwconv1(x)
+        x = self.act(x)
+        x = self.drop(x)
+        x = self.pwconv2(x)
+        x = self.gamma * x
+        x = x.permute(0, 3, 1, 2)
+        return shortcut + self.drop_path(x)
+
 # --------- ConvNeXt Tiny Network ---------
 class ConvNeXt(nn.Module):
-    def __init__(self, in_ch=3, num_classes=10):
+    def __init__(self,
+                 in_chans=3,
+                 num_classes=10,
+                 depths=[3, 3, 9, 3],
+                 dims   =[96, 192, 384, 768],
+                 drop_path_rate=0.):
         super().__init__()
 
-        # ConvNeXt-Tiny configuration
-        dims = [96, 192, 384, 768]
-        depths = [3, 3, 9, 3]
-
-        # Stem: Patchify (Conv stride 4)
+        # Stem: patchify by conv with stride 4
         self.stem = nn.Sequential(
-            nn.Conv2d(in_ch, dims[0], kernel_size=4, stride=4),
-            LayerNorm2d(dims[0])
+            nn.Conv2d(in_chans, dims[0], kernel_size=4, stride=4),
+            nn.GroupNorm(num_groups=1, num_channels=dims[0], eps=1e-6, affine=True),
         )
 
-        # Stages
+        # Stages: each with depthwise + MLP blocks, preceded by downsampling
+        dp_rates = torch.linspace(0, drop_path_rate, sum(depths)).tolist()
+        cur = 0
         self.stages = nn.ModuleList()
-        in_dim = dims[0]
-
         for i in range(len(depths)):
-            blocks = [ConvNeXtBlock(dims[i]) for _ in range(depths[i])]
-            stage = nn.Sequential(*blocks)
-            self.stages.append(stage)
-
-            # Downsample between stages (except after last one)
-            if i < len(depths) - 1:
-                down = nn.Sequential(
-                    LayerNorm2d(dims[i]),
-                    nn.Conv2d(dims[i], dims[i + 1], kernel_size=2, stride=2)
+            blocks = nn.Sequential(*[
+                ConvNeXtBlock(dim=dims[i], drop_path=dp_rates[cur + j])
+                for j in range(depths[i])
+            ])
+            self.stages.append(blocks)
+            cur += depths[i]
+            if i < len(depths)-1:
+                # downsample between stages
+                self.stages.append(
+                    nn.Sequential(
+                        nn.GroupNorm(num_groups=1, num_channels=dims[i], eps=1e-6, affine=True),
+                        nn.Conv2d(dims[i], dims[i+1], kernel_size=2, stride=2),
+                    )
                 )
-                self.stages.append(down)
 
-        # Final normalization + head
+        # Head: global avg‐pool -> linear
         self.norm = nn.LayerNorm(dims[-1], eps=1e-6)
+        self.head = nn.Sequential(
+            nn.LayerNorm(dims[-1], eps=1e-6),
+            nn.Dropout(0.1),
+            nn.Linear(dims[-1], num_classes)
+        )
+
         self.head = nn.Linear(dims[-1], num_classes)
 
     def forward(self, x):
-        # Stem
         x = self.stem(x)
-        x = x.permute(0, 2, 3, 1)  # [B, H, W, C] for first LN
-
-        # Stages
-        for layer in self.stages:
-            x = x.permute(0, 3, 1, 2)  # BHWC → BCHW
-            x = layer(x)
-            x = x.permute(0, 2, 3, 1)  # BCHW → BHWC
-
-        # Global pooling
-        x = x.mean(dim=(1, 2))      # [B, C]
-
-        # Final norm + head
+        for stage in self.stages:
+            if isinstance(stage, nn.Sequential) and isinstance(stage[0], nn.LayerNorm):
+                x = x.permute(0,2,3,1)
+                x = stage(x)
+                x = x.permute(0,3,1,2)
+            else:
+                x = stage(x)
+        x = x.permute(0,2,3,1)
         x = self.norm(x)
-        x = self.head(x)
-        return x
+        x = x.mean(dim=(1,2))
+        return self.head(x)
 
 # ==========================================================
 #  Training
@@ -441,13 +442,13 @@ def train():
     
     # --------- Model type and initialization ---------
     if MODEL == "VGG":
-        model = VGGNet()
+        model = VGGNet().to(device)
         model.apply(init_weights_He_uniform)
     elif MODEL == "Res":
-        model = ResNet()
+        model = ResNet().to(device)
         model.apply(init_weights_He_normal)
     elif MODEL == "ConvNeXt":
-        model = ConvNeXt()
+        model = ConvNeXt().to(device)
         model.apply(init_weights_He_normal)
     else:
         raise ValueError(f"Unknown MODEL {MODEL}")
