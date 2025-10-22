@@ -124,8 +124,6 @@ All images undergo standard preprocessing (normalization, augmentation with flip
 - `report.pdf` – Detailed and exhaustive explanation of model, methods, experiments, and results
 - `papers/` – Reference papers consulted for the implementation
 
-> Note: The provided code does not include the ConvNeXt experiments and the loss robustness assessment.
-
 
 ## Methodology
 
