@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import math, time, pickle
 from datetime import datetime
 from pathlib import Path
@@ -17,12 +16,14 @@ from utils import get_lr, plot_history, loaders, init_weights_He_normal, init_we
 from config import EXPERIMENTS_VGG, EXPERIMENTS_RES, EXPERIMENTS_SE_RES, EXPERIMENTS_CBAM_RES
 
 
-# -------------------------- Global Parameters --------------------------
+# ==========================================================
+#  Global Parameters
+# ==========================================================
 SEED               = 2
 RUNS_ROOT          = Path("./runs_pytorch")
 DATA_ROOT          = Path("./data")
 
-# VGG params
+# --------- VGG params ---------
 PATCH_F            = 2
 PATCH_NF           = 64
 VGG_BLOCKS         = 3
@@ -35,14 +36,14 @@ GLOBAL_AVG_POOL    = False
 REMOVE_LAST_MAXPOOL= False
 CONV_DOWN_SAMP     = False
 
-# Res params
+# --------- Res params ---------
 SHORTCUT           = 'Identity'
 SE_ACTIVATE        = False
 CBAM_ACTIVATE      = False
 REDUCTION          = 8
 MIN_DIM_SE         = 4
 
-# Common params
+# --------- Common params ---------
 MODEL              = 'VGG'
 DATASET            = 'CIFAR10'
 LR                 = 3e-4
@@ -68,15 +69,17 @@ EXP_ID             = "default"   # filled automatically
 torch.manual_seed(SEED)
 np.random.seed(SEED)
 
-# -------------------------- VGG-based Network --------------------------
-# Patchify
+# ==========================================================
+#  VGG-based Network
+# ==========================================================
+# --------- Patchify ---------
 class PatchifyStem(nn.Module):
     def __init__(self, f, nf):
         super().__init__()
         self.conv = nn.Conv2d(3, nf, f, stride=f)
     def forward(self, x): return F.relu(self.conv(x))
 
-# VGG block
+# --------- VGG block ---------
 class VGGBlock(nn.Module):
     def __init__(self, in_c, out_c, use_bn=False, pool=True, p=0):
         super().__init__()
@@ -99,7 +102,7 @@ class VGGBlock(nn.Module):
     def forward(self, x): return self.drop(self.block(x))
     
 
-# Vanilla VGG-based Network
+# --------- Vanilla VGG-based Network ---------
 class VGGNet(nn.Module):
     def __init__(self):
         super().__init__()
@@ -142,8 +145,10 @@ class VGGNet(nn.Module):
         return self.fc2(x)
     
     
-# -------------------------- Res Network --------------------------
-# Res Block
+# ==========================================================
+#  ResNet
+# ==========================================================
+# --------- Res Block ---------
 class ResBlock(nn.Module):
     def __init__(self, in_c, out_c, stride=1):
         super().__init__()
@@ -202,7 +207,7 @@ class ResBlock(nn.Module):
         out += identity
         return self.relu(out)
 
-# SE Block
+# --------- SE Block ---------
 class SEBlock(nn.Module):
     def __init__(self, in_c, r):
         super().__init__()
@@ -223,7 +228,7 @@ class SEBlock(nn.Module):
         y = self.fc(y).view(b, c, 1, 1)
         return x * y.expand_as(x)
     
-# Channel Attention Block
+# --------- Channel Attention Block ---------
 class ChannelAttention(nn.Module):
     def __init__(self, in_c, reduction=16):
         super().__init__()
@@ -251,7 +256,7 @@ class ChannelAttention(nn.Module):
         out = self.sigmoid(out).view(b, c, 1, 1)
         return x * out
 
-# Spatial Attention Block
+# --------- Spatial Attention Block ---------
 class SpatialAttention(nn.Module):
     def __init__(self, kernel_size=7):
         super().__init__()
@@ -265,7 +270,7 @@ class SpatialAttention(nn.Module):
         x = self.conv(x)
         return self.sigmoid(x)
 
-# CBAM Block
+# --------- CBAM Block ---------
 class CBAMBlock(nn.Module):
     def __init__(self, in_c, reduction=8):
         super().__init__()
@@ -277,7 +282,7 @@ class CBAMBlock(nn.Module):
         sa = self.spatial_att(x)
         return x * sa
 
-# Res Network
+# --------- Res Network ---------
 class ResNet(nn.Module):
     def __init__(self):
         super().__init__()
@@ -320,23 +325,131 @@ class ResNet(nn.Module):
         x = x.view(x.size(0), -1)
         return self.fc(x)
 
+# ==========================================================
+#  ConvNeXt
+# ==========================================================
+# --------- ConvNeXt Block ---------
+class ConvNeXtBlock(nn.Module):
+    def __init__(self, dim, drop_path=0.0, layer_scale_init_value=1e-6, expansion=4, kernel_size=7):
+        super().__init__()
+        # Depthwise conv
+        self.dw_conv = nn.Conv2d(dim, dim, kernel_size=kernel_size, padding=kernel_size//2,
+                                 groups=dim, bias=True)
+        # LayerNorm applied on channels-last: we'll permute before/after
+        self.ln = nn.LayerNorm(dim, eps=1e-6)
+        # Pointwise MLP (1x1 convs)
+        hidden_dim = int(dim * expansion)
+        self.pw = nn.Sequential(
+            nn.Conv2d(dim, hidden_dim, kernel_size=1),
+            nn.GELU(),
+            nn.Conv2d(hidden_dim, dim, kernel_size=1)
+        )
+        # Optional layer scale (small learnable multiplier per channel)
+        if layer_scale_init_value > 0:
+            self.layer_scale = nn.Parameter(layer_scale_init_value * torch.ones((dim)), requires_grad=True)
+        else:
+            self.layer_scale = None
 
-# -------------------------- Training --------------------------
-# Training cycle
+        self.drop_path = drop_path  # not implementing stochastic depth here; placeholder
+
+    def forward(self, x):
+        # x: [B, C, H, W]
+        identity = x
+
+        # Depthwise conv
+        x = self.dw_conv(x)  # still [B, C, H, W]
+
+        # Convert to channels-last for LayerNorm: [B, H, W, C]
+        x = x.permute(0, 2, 3, 1)
+        x = self.ln(x)  # LayerNorm on last dim
+        # Back to NCHW
+        x = x.permute(0, 3, 1, 2)
+
+        # Pointwise MLP
+        x = self.pw(x)  # [B, C, H, W]
+
+        # Layer scale
+        if self.layer_scale is not None:
+            # shape [C] -> [1, C, 1, 1]
+            x = x * self.layer_scale.view(1, -1, 1, 1)
+
+        # Residual
+        x = identity + x
+        return x
+
+# --------- ConvNeXt Network ---------
+class ConvNeXt(nn.Module):
+    def __init__(self, in_ch=3, depths=None, dims=None, num_classes=10):
+        super().__init__()
+        # Default config similar scale to ResNet in this repo
+        if depths is None:
+            depths = [N_RES, N_RES, N_RES]  # number of blocks per stage
+        if dims is None:
+            dims = [16, 32, 64]
+
+        assert len(depths) == len(dims)
+
+        # Stem: small conv
+        self.stem = nn.Sequential(
+            nn.Conv2d(in_ch, dims[0], kernel_size=3, stride=1, padding=1, bias=False),
+            nn.BatchNorm2d(dims[0]),
+            nn.ReLU(inplace=True)
+        )
+
+        # Stages
+        self.stages = nn.ModuleList()
+        in_dim = dims[0]
+        for i, (depth, dim) in enumerate(zip(depths, dims)):
+            blocks = []
+            # First block in stage may be identity (same spatial) or downsample if not first stage
+            if i > 0:
+                # Downsample by 2 using conv stride 2 to reduce H/W
+                down = nn.Sequential(
+                    nn.Conv2d(in_dim, dim, kernel_size=2, stride=2, bias=False),
+                    nn.BatchNorm2d(dim),
+                )
+                blocks.append(down)
+            # Append ConvNeXt blocks
+            for _ in range(depth):
+                blocks.append(ConvNeXtBlock(dim))
+            self.stages.append(nn.Sequential(*blocks))
+            in_dim = dim
+
+        # Global pooling + classifier
+        self.pool = nn.AdaptiveAvgPool2d(1)
+        self.fc = nn.Linear(in_dim, num_classes)
+
+    def forward(self, x):
+        # x: [B, 3, H, W]
+        x = self.stem(x)
+        for stage in self.stages:
+            x = stage(x)
+        x = self.pool(x)      # [B, C, 1, 1]
+        x = x.view(x.size(0), -1)
+        return self.fc(x)
+
+# ==========================================================
+#  Training
+# ==========================================================
+# --------- Training cycle ---------
 def train():
     set_seed(SEED)
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     
-    # Model type and initialization
+    # --------- Model type and initialization ---------
     if MODEL == "VGG":
         model = VGGNet()
         model.apply(init_weights_He_uniform)
     elif MODEL == "Res":
         model = ResNet()
         model.apply(init_weights_He_normal)
-    model.to(device)
+    elif MODEL == "ConvNeXt":
+        model = ConvNeXt(num_classes=100 if DATASET == 'CIFAR100' else 10)
+        model.apply(init_weights_He_normal)
+    else:
+        raise ValueError(f"Unknown MODEL {MODEL}")
         
-    # Split parameters before applying weight decay
+    # --------- Split parameters before applying weight decay ---------
     decay, no_decay = [], []
     for module in model.modules():
         for name, param in module.named_parameters(recurse=False):
@@ -345,7 +458,7 @@ def train():
             else:
                 decay.append(param)
         
-    # Criterion and Optimizer
+    # --------- Criterion and Optimizer ---------
     criterion = nn.CrossEntropyLoss(label_smoothing=LABEL_SMOOTH)
     if OPTIMIZER == "Adam":
         optimizer = optim.AdamW([{'params': no_decay, 'weight_decay': 0.0}, 
@@ -355,7 +468,7 @@ def train():
                                {'params': decay, 'weight_decay': WEIGHT_DECAY}],
                                lr=LR, momentum=MOMENTUM)
                                    
-    # Scheduler
+    # --------- Scheduler ---------
     if SCHEDULER == "Decay":
         sched = LambdaLR(optimizer, lr_lambda=custom_lr_schedule) # custom decay
     elif SCHEDULER == "CyclicLR":
@@ -370,7 +483,7 @@ def train():
     else:
         raise ValueError("unknown scheduler")
 
-    # Load data
+    # --------- Load data ---------
     train_loader, val_loader, test_loader = loaders(DATASET, AUGMENT, DATA_ROOT, SEED, BATCH_SIZE)
 
     hist = {k:[] for k in ('step','train_loss','val_loss',
@@ -382,7 +495,7 @@ def train():
     logf = open(run_dir/'metrics.csv','w',buffering=1)
     logf.write("step,eta,train_loss,val_loss,train_acc,val_acc\n")
 
-    # Training loop
+    # --------- Training loop ---------
     best_val = 0.0
     for epoch in range(EPOCHS):
         model.train()
@@ -429,6 +542,9 @@ def train():
     plot_history(hist, run_dir/'training_curves.png')
     with open(run_dir/'history.pkl','wb') as f: pickle.dump(hist,f)
 
+# ==========================================================
+#  Evaluate
+# ==========================================================
 def evaluate(model, loader, criterion, device):
     was_training = model.training # store mode
     model.eval(); loss_sum=acc_sum=n=0
@@ -446,7 +562,9 @@ def evaluate(model, loader, criterion, device):
     return loss_sum/n, acc_sum/n
 
 
-# -------------------------- Experiment Configurations --------------------------
+# ==========================================================
+#  Experiments
+# ==========================================================
 def apply_cfg(cfg):
     if cfg['MODEL'] == 'Res': # update Res-related parameters
         globals().update({
@@ -490,7 +608,9 @@ def apply_cfg(cfg):
     globals()['ETA_MIN'], globals()['ETA_MAX'] = cfg['LR']/10, cfg['LR']
 
 
-# -------------------------- Main --------------------------
+# ==========================================================
+#  Main
+# ==========================================================
 if __name__=="__main__":
     RUNS_ROOT.mkdir(exist_ok=True)
     
