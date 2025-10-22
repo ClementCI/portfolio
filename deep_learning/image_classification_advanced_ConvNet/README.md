@@ -118,13 +118,13 @@ All images undergo standard preprocessing (normalization, augmentation with flip
 
 ## File Structure
 
-- `main.py` – Pipeline runner for selected architectures
+- `main.py` – Models and pipeline runner for selected architectures
 - `config.py` – Configuration settings and model parameters
 - `utils.py` – Training, evaluation, and augmentation utilities
 - `report.pdf` – Detailed and exhaustive explanation of model, methods, experiments, and results
 - `papers/` – Reference papers consulted for the implementation
 
-> Note: The provided code does not include the ConvNeXt implementation and the loss robustness assessment.
+> Note: The provided code does not include the loss robustness assessment.
 
 
 ## Methodology
