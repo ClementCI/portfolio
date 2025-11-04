@@ -1,8 +1,9 @@
+
 # Portfolio
 
 
 
-Welcome to my portfolio of machine learning and data science projects, developed as part of my academic coursework. Each project explores a different area of modern AI, from fundamental algorithms to deep probabilistic models and neural networks. All implementations are original and emphasize conceptual clarity, practical experimentation, and reproducibility. Among these, the [Embedded Topic Model for Document Analysis](#embedded-topic-model-for-document-analysis) and [CNN Architectures for Image Classification: From VGG to ConvNeXt](#cnn-architectures-for-image-classification-from-vgg-to-convnext) stand out as key projects, showcasing up-to-date techniques in natural language processing and computer vision.
+Welcome to my portfolio of machine learning and data science projects, developed as part of my academic coursework. Each project explores a different area of modern AI, from fundamental algorithms to deep probabilistic models and neural networks. All implementations are original and emphasize conceptual clarity, practical experimentation, and reproducibility. Among these, [Poetry Generator: Comparative Analysis of Neural Architectures for Poetic Language Modeling](#poetry-generator-comparative-analysis-of-neural-architectures-for-poetic-language-modeling), [Embedded Topic Model for Document Analysis](#embedded-topic-model-for-document-analysis), and [CNN Architectures for Image Classification: From VGG to ConvNeXt](#cnn-architectures-for-image-classification-from-vgg-to-convnext) stand out as key projects, showcasing up-to-date techniques in natural language processing and computer vision.
 
 
 
@@ -36,7 +37,6 @@ Welcome to my portfolio of machine learning and data science projects, developed
 
 - [Reparameterization of Common Distributions](#reparameterization-of-common-distributions)
 
-- [Embedded Topic Model for Document Analysis](#embedded-topic-model-for-document-analysis)
 
 
 
@@ -48,9 +48,16 @@ Welcome to my portfolio of machine learning and data science projects, developed
 
 - [Image Matching & 3D Reconstruction](#image-matching--3d-reconstruction)
 
+- [CNN Architectures for Image Classification: From VGG to ConvNeXt](#cnn-architectures-for-image-classification-from-vgg-to-convnext)
 
 
-### Deep Learning Projects
+### NLP Projects
+
+- [Poetry Generator: Comparative Analysis of Neural Architectures for Poetic Language Modeling](#poetry-generator-comparative-analysis-of-neural-architectures-for-poetic-language-modeling)
+
+- [Embedded Topic Model for Document Analysis](#embedded-topic-model-for-document-analysis)
+
+### Fundamental Deep Learning Projects
 
 - [Multi-Layer Perceptrons for Classification and Function Approximation](#multi-layer-perceptrons-for-classification-and-function-approximation)
 
@@ -63,8 +70,6 @@ Welcome to my portfolio of machine learning and data science projects, developed
 - [Image Classification with a 2-layer Network](#image-classification-with-a-2-layer-network)
 
 - [Image Classification with a Convolutional Neural Network](#image-classification-with-a-convolutional-neural-network)
-
-- [CNN Architectures for Image Classification: From VGG to ConvNeXt](#cnn-architectures-for-image-classification-from-vgg-to-convnext)
 
 - [Character-Level Language Modeling with RNN](#character-level-language-modeling-with-rnn)
 
@@ -224,18 +229,6 @@ This project focuses on enabling gradient-based optimization for models involvin
 
 
 
-### Embedded Topic Model for Document Analysis
-
-
-
-This project implements the Embedded Topic Model (ETM), which fuses traditional topic modeling with neural word embeddings by embedding both topics and words into the same semantic space. Built in PyTorch and evaluated on the 20 Newsgroups dataset, the model learns to represent documents as mixtures of embedded topics using variational inference. The project compares ETM against Latent Dirichlet Allocation (LDA), evaluating coherence, diversity, and perplexity across multiple vocabulary sizes. Results confirm that ETM offers superior interpretability and richer semantic structure, though it requires careful tuning to match LDA’s predictive reliability.
-
-
-
-[Go to Embedded Topic Model for Document Analysis](./probabilistic_ml/embedded_topic_model/README.md)
-
-
-
 
 
 
@@ -244,12 +237,9 @@ This project implements the Embedded Topic Model (ETM), which fuses traditional 
 
 
 
-The `vision` folder contains projects focused on classical computer vision techniques, emphasizing image analysis through filtering, edge detection, geometric modeling, and 3D reconstruction. Each project demonstrates foundational methods used in low- and mid-level vision, combining theoretical insight with practical experimentation. From frequency-domain processing and multiscale edge detection to feature-based matching and geometric transformations, the implementations offer a comprehensive view of early visual pipelines.
-
-
+The `vision` folder presents a progression from classical computer vision techniques to modern deep learning approaches. The projects emphasize understanding how visual information can be extracted, represented, and interpreted, from low-level image transformations and feature detection to high-level learning with convolutional networks. Together, they highlight key principles in spatial filtering, geometric reasoning, and data-driven feature learning, illustrating how these methods contribute to robust visual perception systems.
 
 ---
-
 
 
 ### Filtering Operations
@@ -288,15 +278,46 @@ This project explores how to recover scene geometry from images using feature-ba
 
 [Go to Image Matching & 3D Reconstruction](./vision/image_matching_and_3d_reconstruction/README.md)
 
+### CNN Architectures for Image Classification: From VGG to ConvNeXt
 
 
 
-
-## Deep Learning Projects
-
+This project explores the evolution of convolutional neural network architectures for image classification by training and evaluating models from scratch on CIFAR-10, CIFAR-100, and ImageNette datasets. It starts with simple VGG-style models and progressively integrates architectural improvements such as batch normalization, global average pooling, attention modules (SE and CBAM), and robust loss functions. The project also benchmarks ConvNeXt-Tiny on ImageNette and studies training under noisy labels using Symmetric Cross-Entropy. Extensive ablation studies and visualizations accompany each experiment to assess the contribution of regularization, architecture, and optimization strategies.
 
 
-The `deep_learning` folder features a collection of end-to-end deep learning projects built from scratch or using PyTorch. Covering a wide range of architectures and tasks—from feedforward neural networks to convolutional and recurrent models—these projects emphasize implementation, training, and evaluation of deep networks. Key topics include gradient validation, unsupervised pretraining, image classification, generative models, architectural ablations, and sequence modeling. Each project explores how network design, regularization, and optimization influence generalization and performance on real-world datasets.
+
+[Go to CNN Architectures for Image Classification: From VGG to ConvNeXt](./vision/image_classification_advanced_CNNs/README.md)
+
+
+## NLP Projects
+
+The `nlp` folder explores core ideas in natural language processing through both probabilistic and neural approaches. The projects investigate how language can be modeled, generated, and organized using modern machine learning techniques. They range from experiments in text generation and stylistic modeling to topic discovery and semantic representation, demonstrating the interplay between linguistic structure, model architecture, and learned meaning in language data.
+
+---
+
+### Poetry Generator: Comparative Analysis of Neural Architectures for Poetic Language Modeling
+
+
+This project explores automatic poetry generation by comparing custom RNN/LSTM/GPT models built and trained from scratch with a fine-tuned GPT-2 (Hugging Face) using selective unfreezing and parameter-efficient fine-tuning with LoRA. Implemented in PyTorch and trained on _Emily Dickinson’s_ _Poems: Three Series, Complete_, the work evaluates outputs with linguistic,  structural, and semantic metrics (spelling accuracy, lexical diversity, n-gram overlap, ROUGE-L, and structure similarity). Experiments span character-level, BPE, and GPT-2 tokenization to quantify how encoding and architecture shape rhythm, style, and stanza form. The repository includes a fully automated pipeline for training, generation, and evaluation to support systematic experimentation in computational creativity.
+
+[Go to Poetry Generator: Comparative Analysis of Neural Architectures for Poetic Language Modeling](./nlp/poetry_generator/README.md)
+
+### Embedded Topic Model for Document Analysis
+
+
+
+This project implements the Embedded Topic Model (ETM), which fuses traditional topic modeling with neural word embeddings by embedding both topics and words into the same semantic space. Built in PyTorch and evaluated on the 20 Newsgroups dataset, the model learns to represent documents as mixtures of embedded topics using variational inference. The project compares ETM against Latent Dirichlet Allocation (LDA), evaluating coherence, diversity, and perplexity across multiple vocabulary sizes. Results confirm that ETM offers superior interpretability and richer semantic structure, though it requires careful tuning to match LDA’s predictive reliability.
+
+
+
+[Go to Embedded Topic Model for Document Analysis](./nlp/embedded_topic_model/README.md)
+
+
+## Fundamental Deep Learning Projects
+
+
+
+The `fundamental_deep_learning` folder features a collection of **deep learning projects** built from scratch or using PyTorch. Focusing on **foundational models and architectures that have been central to the development of deep learning**, even if not state-of-the-art today, these end-to-end implementations span a wide range of paradigms, from feedforward networks and Restricted Boltzmann machines to convolutional and recurrent models. The projects emphasize implementation, training, and evaluation, with key topics including gradient validation, unsupervised pretraining, image classification, generative modeling, architectural ablations, and sequence learning. Each project examines how network design, regularization, and optimization shape generalization and performance on real-world datasets.
 
 
 
@@ -314,7 +335,7 @@ This project implements and investigates multi-layer perceptrons (MLPs) for supe
 
 
 
-[Go to Multi-Layer Perceptrons for Classification and Function Approximation](./deep_learning/classification_regression_mlp/README.md)
+[Go to Multi-Layer Perceptrons for Classification and Function Approximation](./fundamental_deep_learning/classification_regression_mlp/README.md)
 
 
 
@@ -326,7 +347,7 @@ This project explores the capacity and retrieval dynamics of Hopfield networks t
 
 
 
-[Go to Hopfield Networks for Associative Memory](./deep_learning/hopfield_net_associative_memory/README.md)
+[Go to Hopfield Networks for Associative Memory](./fundamental_deep_learning/hopfield_net_associative_memory/README.md)
 
 
 
@@ -340,7 +361,7 @@ This project implements a Deep Belief Network (DBN) composed of stacked Restrict
 
 
 
-[Go to Deep Belief Networks with Restricted Boltzmann Machines](./deep_learning/deep_belief_net_rbm/README.md)
+[Go to Deep Belief Networks with Restricted Boltzmann Machines](./fundamental_deep_learning/deep_belief_net_rbm/README.md)
 
 
 
@@ -356,7 +377,7 @@ This project implements a fully connected one-layer neural network from scratch 
 
 
 
-[Go to Image Classification with a 1-layer Network](./deep_learning/image_classification_one_layer_net/README.md)
+[Go to Image Classification with a 1-layer Network](./fundamental_deep_learning/image_classification_one_layer_net/README.md)
 
 
 
@@ -372,7 +393,7 @@ This project focuses on training a fully connected 2-layer neural network from s
 
 
 
-[Go to Image Classification with a 2-layer Network](./deep_learning/image_classification_two_layer_net/README.md)
+[Go to Image Classification with a 2-layer Network](./fundamental_deep_learning/image_classification_two_layer_net/README.md)
 
 
 
@@ -386,19 +407,8 @@ This project implements and trains a convolutional neural network entirely with 
 
 
 
-[Go to Image Classification with a Convolutional Neural Network](./deep_learning/image_classification_ConvNet/README.md)
+[Go to Image Classification with a Convolutional Neural Network](./fundamental_deep_learning/image_classification_ConvNet/README.md)
 
-
-
-### CNN Architectures for Image Classification: From VGG to ConvNeXt
-
-
-
-This project explores the evolution of convolutional neural network architectures for image classification by training and evaluating models from scratch on CIFAR-10, CIFAR-100, and ImageNette datasets. It starts with simple VGG-style models and progressively integrates architectural improvements such as batch normalization, global average pooling, attention modules (SE and CBAM), and robust loss functions. The project also benchmarks ConvNeXt-Tiny on ImageNette and studies training under noisy labels using Symmetric Cross-Entropy. Extensive ablation studies and visualizations accompany each experiment to assess the contribution of regularization, architecture, and optimization strategies.
-
-
-
-[Go to CNN Architectures for Image Classification: From VGG to ConvNeXt](./deep_learning/image_classification_advanced_ConvNet/README.md)
 
 
 
@@ -412,7 +422,7 @@ This project involves building a recurrent neural network (RNN) from scratch usi
 
 
 
-[Go to Character-Level Language Modeling with RNN](./deep_learning/language_modeling_rnn/README.md)
+[Go to Character-Level Language Modeling with RNN](./fundamental_deep_learning/language_modeling_rnn/README.md)
 
 
 

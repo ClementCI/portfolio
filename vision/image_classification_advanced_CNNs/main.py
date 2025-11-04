@@ -12,7 +12,7 @@ import torch.optim as optim
 
 from torch.optim.lr_scheduler import CyclicLR, CosineAnnealingWarmRestarts, LinearLR, StepLR, LambdaLR, MultiStepLR
 
-from utils import get_lr, plot_history, loaders, init_weights_He_normal, init_weights_He_uniform, custom_lr_schedule, set_seed
+from utils import get_lr, plot_history, loaders, init_weights_He_normal, init_weights_He_uniform, custom_lr_schedule, set_seed, SCELoss
 from config import EXPERIMENTS_VGG, EXPERIMENTS_RES, EXPERIMENTS_SE_RES, EXPERIMENTS_CBAM_RES, EXPERIMENTS_CONVNEXT
 
 

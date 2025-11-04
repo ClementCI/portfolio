@@ -8,6 +8,7 @@ import torch.nn.init as init
 import torch.nn as nn
 import torchvision.transforms as T
 import matplotlib.pyplot as plt
+import torch.nn.functional as F
 
 # -------- Set seed --------
 def set_seed(seed):
