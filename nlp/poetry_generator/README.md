@@ -257,16 +257,18 @@ The fine-tuning process involved unfreezing the last two transformer blocks, as 
 #### - RNN from scratch
 
 <p align="center">
-  <img src="figures/RNNs/loss_rnns_char.png" alt="Loss RNNs char" width="30%" style="margin-right: 10px;">
-  <img src="figures/RNNs/spelling_acc_rnns_char" alt="Spelling acc RNNs char" width="30%" style="margin-right: 10px;">
-  <img src="figures/RNNs/diversity_rnns_char.png" alt="Diversity RNNs char" width="30%">
+  <img src="figures/RNNs/loss_rnns_char.png" alt="Loss RNNs char" width="45%" style="margin-right: 10px;">
+  <img src="figures/RNNs/spelling_acc_rnns_char" alt="Spelling acc RNNs char" width="45%">
+</p>
+<p align="center">
+  <img src="figures/RNNs/diversity_rnns_char.png" alt="Diversity RNNs char" width="45%" style="margin-right: 10px;">
+  <img src="figures/RNNs/2gram_rnns_char.png" alt="2gram RNNs char" width="45%">
+</p>
+<p align="center">
+  <img src="figures/RNNs/rouge_rnns_char" alt="Rouge RNNs char" width="45%" style="margin-right: 10px;">
+  <img src="figures/RNNs/len_rnns_char.png" alt="Len RNNs char" width="45%">
 </p>
 
-<p align="center">
-  <img src="figures/RNNs/2gram_rnns_char.png" alt="2gram RNNs char" width="30%" style="margin-right: 10px;">
-  <img src="figures/RNNs/rouge_rnns_char" alt="Rouge RNNs char" width="30%" style="margin-right: 10px;">
-  <img src="figures/RNNs/len_rnns_char.png" alt="Len RNNs char" width="30%">
-</p>
 
 *Evolution of loss and metrics during training for multiple RNN architectures using character-level tokenizer.*
 
@@ -317,16 +319,18 @@ The RNN model consistently benefits from larger architectures across all evaluat
 #### - LSTM from scratch
 
 <p align="center">
-  <img src="figures/LSTMs/loss_lstms_char.png" alt="Loss LSTMs char" width="30%" style="margin-right: 10px;">
-  <img src="figures/LSTMs/spelling_acc_lstms_char" alt="Spelling acc LSTMs char" width="30%" style="margin-right: 10px;">
-  <img src="figures/LSTMs/diversity_lstms_char.png" alt="Diversity LSTMs char" width="30%">
+  <img src="figures/LSTMs/loss_lstms_char.png" alt="Loss LSTMs char" width="45%" style="margin-right: 10px;">
+  <img src="figures/LSTMs/spelling_acc_lstms_char" alt="Spelling acc LSTMs char" width="45%">
+</p>
+<p align="center">
+  <img src="figures/LSTMs/diversity_lstms_char.png" alt="Diversity LSTMs char" width="45%" style="margin-right: 10px;">
+  <img src="figures/LSTMs/2gram_lstms_char.png" alt="2gram LSTMs char" width="45%">
+</p>
+<p align="center">
+  <img src="figures/LSTMs/rouge_lstms_char" alt="Rouge LSTMs char" width="45%" style="margin-right: 10px;">
+  <img src="figures/LSTMs/len_lstms_char.png" alt="Len LSTMs char" width="45%">
 </p>
 
-<p align="center">
-  <img src="figures/LSTMs/2gram_lstms_char.png" alt="2gram LSTMs char" width="30%" style="margin-right: 10px;">
-  <img src="figures/LSTMs/rouge_lstms_char" alt="Rouge LSTMs char" width="30%" style="margin-right: 10px;">
-  <img src="figures/LSTMs/len_lstms_char.png" alt="Len LSTMs char" width="30%">
-</p>
 
 *Evolution of loss and metrics during training for multiple LSTM architectures using character-level tokenizer.*
 
@@ -363,15 +367,16 @@ Similarly, the LSTM model demonstrates performance improvements with increasing 
 #### - GPT from scratch
 
 <p align="center">
-  <img src="figures/GPTs/loss_gpts_char.png" alt="Loss GPTs char" width="30%" style="margin-right: 10px;">
-  <img src="figures/GPTs/spelling_acc_gpts_char" alt="Spelling acc GPTs char" width="30%" style="margin-right: 10px;">
-  <img src="figures/GPTs/diversity_gpts_char.png" alt="Diversity GPTs char" width="30%">
+  <img src="figures/GPTs/loss_gpts_char.png" alt="Loss GPTs char" width="45%" style="margin-right: 10px;">
+  <img src="figures/GPTs/spelling_acc_gpts_char" alt="Spelling acc GPTs char" width="45%">
 </p>
-
 <p align="center">
-  <img src="figures/GPTs/2gram_gpts_char.png" alt="2gram GPTs char" width="30%" style="margin-right: 10px;">
-  <img src="figures/GPTs/rouge_gpts_char" alt="Rouge GPTs char" width="30%" style="margin-right: 10px;">
-  <img src="figures/GPTs/len_gpts_char.png" alt="Len GPTs char" width="30%">
+  <img src="figures/GPTs/diversity_gpts_char.png" alt="Diversity GPTs char" width="45%" style="margin-right: 10px;">
+  <img src="figures/GPTs/2gram_gpts_char.png" alt="2gram GPTs char" width="45%">
+</p>
+<p align="center">
+  <img src="figures/GPTs/rouge_gpts_char" alt="Rouge GPTs char" width="45%" style="margin-right: 10px;">
+  <img src="figures/GPTs/len_gpts_char.png" alt="Len GPTs char" width="45%">
 </p>
 
 *Evolution of loss and metrics during training for multiple GPT architectures using character-level tokenizer.*
@@ -417,16 +422,18 @@ Once again, the largest GPT model achieves the best performance across nearly al
 #### - RNN from scratch
 
 <p align="center">
-  <img src="figures/RNNs/loss_rnns_bpe.png" alt="Loss RNNs bpe" width="30%" style="margin-right: 10px;">
-  <img src="figures/RNNs/spelling_acc_rnns_bpe" alt="Spelling acc RNNs bpe" width="30%" style="margin-right: 10px;">
-  <img src="figures/RNNs/diversity_rnns_bpe.png" alt="Diversity RNNs bpe" width="30%">
+  <img src="figures/RNNs/loss_rnns_bpe.png" alt="Loss RNNs bpe" width="45%" style="margin-right: 10px;">
+  <img src="figures/RNNs/spelling_acc_rnns_bpe" alt="Spelling acc RNNs bpe" width="45%">
+</p>
+<p align="center">
+  <img src="figures/RNNs/diversity_rnns_bpe.png" alt="Diversity RNNs bpe" width="45%" style="margin-right: 10px;">
+  <img src="figures/RNNs/2gram_rnns_bpe.png" alt="2gram RNNs bpe" width="45%">
+</p>
+<p align="center">
+  <img src="figures/RNNs/rouge_rnns_bpe" alt="Rouge RNNs bpe" width="45%" style="margin-right: 10px;">
+  <img src="figures/RNNs/len_rnns_bpe.png" alt="Len RNNs bpe" width="45%">
 </p>
 
-<p align="center">
-  <img src="figures/RNNs/2gram_rnns_bpe.png" alt="2gram RNNs bpe" width="30%" style="margin-right: 10px;">
-  <img src="figures/RNNs/rouge_rnns_bpe" alt="Rouge RNNs bpe" width="30%" style="margin-right: 10px;">
-  <img src="figures/RNNs/len_rnns_bpe.png" alt="Len RNNs bpe" width="30%">
-</p>
 
 *Evolution of loss and metrics during training for multiple RNN architectures using BPE tokenizer.*
 
@@ -474,16 +481,18 @@ The RNN model using a BPE tokenizer shows a clear performance improvement over t
 #### - LSTM from scratch
 
 <p align="center">
-  <img src="figures/LSTMs/loss_lstms_bpe.png" alt="Loss LSTMs bpe" width="30%" style="margin-right: 10px;">
-  <img src="figures/LSTMs/spelling_acc_lstms_bpe" alt="Spelling acc LSTMs bpe" width="30%" style="margin-right: 10px;">
-  <img src="figures/LSTMs/diversity_lstms_bpe.png" alt="Diversity LSTMs bpe" width="30%">
+  <img src="figures/LSTMs/loss_lstms_bpe.png" alt="Loss LSTMs bpe" width="45%" style="margin-right: 10px;">
+  <img src="figures/LSTMs/spelling_acc_lstms_bpe" alt="Spelling acc LSTMs bpe" width="45%">
+</p>
+<p align="center">
+  <img src="figures/LSTMs/diversity_lstms_bpe.png" alt="Diversity LSTMs bpe" width="45%" style="margin-right: 10px;">
+  <img src="figures/LSTMs/2gram_lstms_bpe.png" alt="2gram LSTMs bpe" width="45%">
+</p>
+<p align="center">
+  <img src="figures/LSTMs/rouge_lstms_bpe" alt="Rouge LSTMs bpe" width="45%" style="margin-right: 10px;">
+  <img src="figures/LSTMs/len_lstms_bpe.png" alt="Len LSTMs bpe" width="45%">
 </p>
 
-<p align="center">
-  <img src="figures/LSTMs/2gram_lstms_bpe.png" alt="2gram LSTMs bpe" width="30%" style="margin-right: 10px;">
-  <img src="figures/LSTMs/rouge_lstms_bpe" alt="Rouge LSTMs bpe" width="30%" style="margin-right: 10px;">
-  <img src="figures/LSTMs/len_lstms_bpe.png" alt="Len LSTMs bpe" width="30%">
-</p>
 
 *Evolution of loss and metrics during training for multiple LSTM architectures using BPE tokenizer.*
 
@@ -527,16 +536,18 @@ Once again, the BPE tokenizer leads to overall performance improvements. However
 #### - GPT from scratch
 
 <p align="center">
-  <img src="figures/GPTs/loss_gpts_bpe.png" alt="Loss GPTs bpe" width="30%" style="margin-right: 10px;">
-  <img src="figures/GPTs/spelling_acc_gpts_bpe" alt="Spelling acc GPTs bpe" width="30%" style="margin-right: 10px;">
-  <img src="figures/GPTs/diversity_gpts_bpe.png" alt="Diversity GPTs bpe" width="30%">
+  <img src="figures/GPTs/loss_gpts_bpe.png" alt="Loss GPTs bpe" width="45%" style="margin-right: 10px;">
+  <img src="figures/GPTs/spelling_acc_gpts_bpe" alt="Spelling acc GPTs bpe" width="45%">
+</p>
+<p align="center">
+  <img src="figures/GPTs/diversity_gpts_bpe.png" alt="Diversity GPTs bpe" width="45%" style="margin-right: 10px;">
+  <img src="figures/GPTs/2gram_gpts_bpe.png" alt="2gram GPTs bpe" width="45%">
+</p>
+<p align="center">
+  <img src="figures/GPTs/rouge_gpts_bpe" alt="Rouge GPTs bpe" width="45%" style="margin-right: 10px;">
+  <img src="figures/GPTs/len_gpts_bpe.png" alt="Len GPTs bpe" width="45%">
 </p>
 
-<p align="center">
-  <img src="figures/GPTs/2gram_gpts_bpe.png" alt="2gram GPTs bpe" width="30%" style="margin-right: 10px;">
-  <img src="figures/GPTs/rouge_gpts_bpe" alt="Rouge GPTs bpe" width="30%" style="margin-right: 10px;">
-  <img src="figures/GPTs/len_gpts_bpe.png" alt="Len GPTs bpe" width="30%">
-</p>
 
 *Evolution of loss and metrics during training for multiple GPT architectures using BPE tokenizer.*
 
@@ -576,16 +587,18 @@ The GPT model using a BPE tokenizer also shows a consistent performance boost co
 ### 3. Pretrained GPT-2
 
 <p align="center">
-  <img src="figures/GPT2/loss_gpt2.png" alt="Loss GPT2" width="30%" style="margin-right: 10px;">
-  <img src="figures/GPT2/spelling_acc_gpt2" alt="Spelling acc GPT2" width="30%" style="margin-right: 10px;">
-  <img src="figures/GPT2/diversity_gpt2.png" alt="Diversity GPT2" width="30%">
+  <img src="figures/GPT2/loss_gpt2.png" alt="Loss GPT2" width="45%" style="margin-right: 10px;">
+  <img src="figures/GPT2/spelling_acc_gpt2" alt="Spelling acc GPT2" width="45%">
+</p>
+<p align="center">
+  <img src="figures/GPT2/diversity_gpt2.png" alt="Diversity GPT2" width="45%" style="margin-right: 10px;">
+  <img src="figures/GPT2/2gram_gpt2.png" alt="2gram GPT2" width="45%">
+</p>
+<p align="center">
+  <img src="figures/GPT2/rouge_gpt2" alt="Rouge GPT2" width="45%" style="margin-right: 10px;">
+  <img src="figures/GPT2/len_gpt2.png" alt="Len GPT2" width="45%">
 </p>
 
-<p align="center">
-  <img src="figures/GPT2/2gram_gpt2.png" alt="2gram GPT2" width="30%" style="margin-right: 10px;">
-  <img src="figures/GPT2/rouge_gpt2" alt="Rouge GPT2" width="30%" style="margin-right: 10px;">
-  <img src="figures/GPT2/len_gpt2.png" alt="Len GPT2" width="30%">
-</p>
 
 *Evolution of loss and metrics during the fine-tuning of HF GPT-2 using GPT-2 tokenizer.*
 
