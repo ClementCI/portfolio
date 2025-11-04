@@ -120,7 +120,9 @@ Preprocessing includes:
 ├── `main.py` — Main entry point for training and evaluation 
 │  
 ├── `config.py` — Defines experiment settings and model hyperparameters  
-│  
+│ 
+├── `requirements.txt` — Lists all the Python packages needed
+│ 
 ├── `core/` — Core code  
 │ ├── `evaluate.py` — Implements evaluation metrics (spelling, diversity, n-gram overlap, ROUGE-L, structure)  
 │ ├── `train.py` — Unified training loop for all models with evaluation and early stopping  
