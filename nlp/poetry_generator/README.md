@@ -34,7 +34,7 @@ This project investigates **automatic poetry generation** through both **custom-
 
 The primary objective is to examine how variations in **architecture design** and **tokenization strategy** (character-level, BPE, and GPT-2) influence a model’s capacity to capture the **rhythm, style, and structure** characteristic of poetic language.
 
-The final outcome is a fully automated pipeline for training, generating, and evaluating poetry under diverse configurations, providing a foundation for systematic experimentation in computational creativity.
+The final outcome is a **fully automated pipeline for training, generating, and evaluating poetry** under diverse configurations, providing a foundation for systematic experimentation in computational creativity.
 
 ## Key Results
 
