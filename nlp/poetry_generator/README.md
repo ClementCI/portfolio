@@ -116,35 +116,35 @@ Preprocessing includes:
 - Tokenization using the selected tokenizer (char/BPE/GPT-2)
 
 ## Files Structure
-
-├── `main.py` — Main entry point for training, generation, and evaluation 
+```
+├── main.py — Main entry point for training, generation, and evaluation 
 │  
-├── `config.py` — Defines experiment settings and model hyperparameters  
+├── config.py — Defines experiment settings and model hyperparameters  
 │ 
-├── `requirements.txt` — Lists all the Python packages needed
-│ 
-├── `core/` — Core code  
-│ ├── `evaluate.py` — Implements evaluation metrics (spelling, diversity, n-gram overlap, ROUGE-L, structure)  
-│ ├── `train.py` — Unified training loop for all models with evaluation and early stopping  
-│ └── `generate.py` — Autoregressive text generation for all models (temperature scaling, top-k, top-p sampling)  
+├── requirements.txt — Lists all the Python packages needed
+│
+├── core/ — Core code  
+│ ├── evaluate.py — Implements evaluation metrics (spelling, diversity, n-gram overlap, ROUGE-L, structure)  
+│ ├── train.py — Unified training loop for all models with evaluation and early stopping  
+│ └── generate.py — Autoregressive text generation for all models (temperature scaling, top-k, top-p sampling)  
 │  
-├── `models/` — Models implementations
-│ ├── `rnn.py` — Custom RNN model built with PyTorch  
-│ ├── `lstm.py` — Custom LSTM model built with PyTorch  
-│ ├── `gpt.py` — Custom GPT (decoder-only Transformer) built in PyTorch with Flash Attention acceleration
-│ └── `gpt2.py` — GPT-2 wrapper (Hugging Face) with LoRA and layer freezing  
+├── models/ — Models implementations
+│ ├── rnn.py — Custom RNN model built with PyTorch  
+│ ├── lstm.py — Custom LSTM model built with PyTorch  
+│ ├── gpt.py — Custom GPT (decoder-only Transformer) built in PyTorch with Flash Attention acceleration
+│ └── gpt2.py — GPT-2 wrapper (Hugging Face) with LoRA and layer freezing  
 │  
-├── `utils/` — Various utility functions
-│ ├── `tokenizers.py` — Character-level, BPE, and GPT-2 tokenizer wrappers  
-│ └── `helpers.py` — Helper functions for preprocessing, saving, and logging  
+├── utils/ — Various utility functions
+│ ├── tokenizers.py — Character-level, BPE, and GPT-2 tokenizer wrappers  
+│ └── helpers.py — Helper functions for preprocessing, saving, and logging  
 │  
-├── `data/` 
-│ └── `dickinson.txt` — Emily Dickinson’s “Poems: Three Series, Complete” (Project Gutenberg)  
+├── data/ 
+│ └── dickinson.txt — Emily Dickinson’s “Poems: Three Series, Complete” (Project Gutenberg)  
 │  
-└── `training_results/` — Automatically saved training results
+└── training_results/ — Automatically saved training results
 │  
-└── `generated_text/` — Automatically saved generated poems
-
+└── generated_text/ — Automatically saved generated poems
+```
 ## **Methodology**
 ### 1. **Preprocessing**
    - Clean and annotate raw text using structural tokens
