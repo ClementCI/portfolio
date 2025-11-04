@@ -147,7 +147,7 @@ Preprocessing includes:
 ### 1. **Preprocessing**
    - Clean and annotate raw text using structural tokens
    - Tokenize with chosen tokenizer (`char`, `bpe`, or `gpt2`)
-   - Split the text into overlapping chunks for GPT models, using a 78% overlap.
+   - Split the text into overlapping chunks for GPT models, using a 75% overlap.
 
 ### 2. **Training**
    - Autoregressive next-token prediction
@@ -179,6 +179,8 @@ The training loop employed the **AdamW optimizer** with **selective weight decay
 A **dropout rate of 0.2** was consistently applied for regularization across all models, except during fine-tuning, where a lower rate was only applied on LoRA parameters. Models trained **from scratch** were run for **150 epochs**, while **fine-tuning** was limited to **50 epochs** due to computational resource constraints.
 
 A **batch size of 32** was used for all training-from-scratch experiments, whereas **fine-tuning** employed a smaller batch size of **4** to fit GPU memory limits. The **context window** was set to **512 tokens** for character-level tokenizers and **256 tokens** for subword-level tokenizers, balancing computational efficiency and contextual coverage.
+
+For transformer-based models, the training corpus is segmented into overlapping context windows with approximately 75% overlap. This strategy preserves cross-sequence continuity, allowing the model to retain exposure to transitional dependencies between neighboring text fragments and to better learn long-range poetic structures.
 
 #### - Generation
 All generated texts were produced using a combination of **temperature scaling**, **top-k sampling**, and **top-p (nucleus) sampling** to balance creativity and coherence. Generation parameters were set to _temperature = 0.9_, _top_k = 20_ for **character-level tokenizers**, and _top_k = 110_ for **subword-level tokenizers**, with _top_p = 0.9_ applied in both cases.
