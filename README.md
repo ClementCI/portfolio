@@ -3,7 +3,7 @@
 
 
 
-Welcome to my portfolio of machine learning and data science projects, developed through a combination of academic coursework and personal exploration. Each project explores a different area of modern AI, from fundamental algorithms to deep probabilistic models and neural networks. All implementations are original and emphasize conceptual clarity, practical experimentation, and reproducibility. Among these, [Poetry Generator: Comparative Analysis of Neural Architectures for Poetic Language Modeling](#poetry-generator-comparative-analysis-of-neural-architectures-for-poetic-language-modeling), [Embedded Topic Model for Document Analysis](#embedded-topic-model-for-document-analysis), and [CNN Architectures for Image Classification: From VGG to ConvNeXt](#cnn-architectures-for-image-classification-from-vgg-to-convnext) stand out as key projects, showcasing up-to-date techniques in natural language processing and computer vision.
+Welcome to my portfolio of machine learning and data science projects, developed through a combination of academic coursework and personal exploration. Each project explores a different area of modern AI, from fundamental algorithms to deep probabilistic models and neural networks. All implementations are original and emphasize conceptual clarity, practical experimentation, and reproducibility. Among these, [Poetry Generator: Comparative Analysis of Neural Architectures](#poetry-generator-comparative-analysis-of-neural-architectures), [Embedded Topic Model for Document Analysis](#embedded-topic-model-for-document-analysis), and [CNN Architectures for Image Classification: From VGG to ConvNeXt](#cnn-architectures-for-image-classification-from-vgg-to-convnext) stand out as key projects, showcasing up-to-date techniques in natural language processing and computer vision.
 
 
 
@@ -53,7 +53,7 @@ Welcome to my portfolio of machine learning and data science projects, developed
 
 ### NLP Projects
 
-- [Poetry Generator: Comparative Analysis of Neural Architectures for Poetic Language Modeling](#poetry-generator-comparative-analysis-of-neural-architectures-for-poetic-language-modeling)
+- [Poetry Generator: Comparative Analysis of Neural Architectures](#poetry-generator-comparative-analysis-of-neural-architectures)
 
 - [Embedded Topic Model for Document Analysis](#embedded-topic-model-for-document-analysis)
 
@@ -295,12 +295,12 @@ The `nlp` folder studies core ideas in natural language processing through both 
 
 ---
 
-### Poetry Generator: Comparative Analysis of Neural Architectures for Poetic Language Modeling
+### Poetry Generator: Comparative Analysis of Neural Architectures
 
 
 This project explores automatic poetry generation by comparing custom RNN/LSTM/GPT models built and trained from scratch with a fine-tuned GPT-2 (Hugging Face) using selective unfreezing and parameter-efficient fine-tuning with LoRA. Implemented in PyTorch and trained on _Emily Dickinson’s_ _Poems: Three Series, Complete_, the work evaluates outputs with linguistic,  structural, and semantic metrics (spelling accuracy, lexical diversity, n-gram overlap, ROUGE-L, and structure similarity). Experiments span character-level, BPE, and GPT-2 tokenization to quantify how encoding and architecture shape rhythm, style, and stanza form. The repository includes a fully automated pipeline for training, generation, and evaluation to support systematic experimentation in computational creativity.
 
-[Go to Poetry Generator: Comparative Analysis of Neural Architectures for Poetic Language Modeling](./nlp/poetry_generator/README.md)
+[Go to Poetry Generator: Comparative Analysis of Neural Architectures](./nlp/poetry_generator/README.md)
 
 ### Embedded Topic Model for Document Analysis
 
