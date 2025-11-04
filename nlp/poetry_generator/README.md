@@ -39,15 +39,16 @@ The final outcome is a fully automated pipeline for training, generating, and ev
 ## Key Results
 
 <p align="center">
-  <img src="figures/bests/spelling_acc_best.png" alt="Spelling acc best" width="30%" style="margin-right: 10px;">
-  <img src="figures/bests/diversity_best" alt="Diversity best" width="30%" style="margin-right: 10px;">
-  <img src="figures/bests/2gram_best.png" alt="2gram best" width="30%">
+  <img src="figures/bests/spelling_acc_best.png" alt="Spelling acc best" width="45%" style="margin-right: 10px;">
+  <img src="figures/bests/diversity_best" alt="Diversity best" width="45%">
 </p>
-
 <p align="center">
-  <img src="figures/bests/3gram_best.png" alt="3gram best" width="30%" style="margin-right: 10px;">
-  <img src="figures/bests/rouge_best" alt="Rouge best" width="30%" style="margin-right: 10px;">
-  <img src="figures/bests/len_best.png" alt="Len best" width="30%">
+  <img src="figures/bests/2gram_best.png" alt="2gram best" width="45%" style="margin-right: 10px;">
+  <img src="figures/bests/3gram_best.png" alt="3gram best" width="45%">
+</p>
+<p align="center">
+  <img src="figures/bests/rouge_best" alt="Rouge best" width="45%" style="margin-right: 10px;">
+  <img src="figures/bests/len_best.png" alt="Len best" width="45%">
 </p>
 
 *Evolution of metrics during the training aff all best-performing model configurations.*
