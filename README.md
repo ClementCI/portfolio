@@ -291,7 +291,7 @@ This project explores the evolution of convolutional neural network architecture
 
 ## NLP Projects
 
-The `nlp` folder explores core ideas in natural language processing through both probabilistic and neural approaches. The projects investigate how language can be modeled, generated, and organized using modern machine learning techniques. They range from experiments in text generation and stylistic modeling to topic discovery and semantic representation, demonstrating the interplay between linguistic structure, model architecture, and learned meaning in language data.
+The `nlp` folder studies core ideas in natural language processing through both probabilistic and neural approaches. The projects investigate how language can be modeled, generated, and organized using modern machine learning techniques. They range from experiments in text generation and stylistic modeling to topic discovery and semantic representation, demonstrating the interplay between linguistic structure, model architecture, and learned meaning in language data.
 
 ---
 
