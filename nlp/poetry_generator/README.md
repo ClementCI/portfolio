@@ -59,6 +59,7 @@ The final outcome is a fully automated pipeline for training, generating, and ev
 | Best LSTM (from scratch)  |  0.957    |    0.604       |     0.296  |    0.0113       |     **0.623**     |      0.541         |    0.762        |   
 | Best GPT (from scratch)   |   0.958 |     **0.636**      |      **0.303** |     **0.0168**      | 0.620     |      0.584       |      0.68    |    
 | Best GPT-2 (fine-tuned)   |       **0.996**      |       0.594       |     0.219         |    0.00757            |    0.577         |       **0.656**         |     **0.862**         |
+
 *Metrics evaluation of the best-performing configurations for each model type, selected based on their combined score.*
 
 ```
