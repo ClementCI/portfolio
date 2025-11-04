@@ -10,7 +10,7 @@
 4. [Dataset](#dataset)  
 5. [Files Structure](#files-structure)  
 6. [Methodology](#methodology)  
-    1. [Preprocessing](#preprocessing)  
+    1. [Preprocessing](#1-preprocessing)  
     2. [Training](#training)  
     3. [Evaluation](#evaluation)  
     4. [Generation](#generation)  
@@ -117,7 +117,7 @@ Preprocessing includes:
 
 ## Files Structure
 
-├── `main.py` — Main entry point for training and evaluation 
+├── `main.py` — Main entry point for training, generation, and evaluation 
 │  
 ├── `config.py` — Defines experiment settings and model hyperparameters  
 │ 
