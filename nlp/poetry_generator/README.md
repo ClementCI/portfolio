@@ -1,6 +1,6 @@
 
 
-# Poetry Generator: Comparative Analysis of Neural Architectures for Poetic Language Modeling
+# Poetry Generator: Comparative Analysis of Neural Architectures
 
 
 ## Table of Contents
