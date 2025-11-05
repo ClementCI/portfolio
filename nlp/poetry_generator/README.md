@@ -20,12 +20,12 @@
 8. [Results and Discussion](#results-and-discussion)  
     1. [Character-Level Tokenizer](#1-character-level-tokenizer)  
     2. [Byte-Pair Encoding Tokenizer](#2-byte-pair-encoding-tokenizer)  
-    3. [Pretrained GPT-2](#3-pretrained-gpt-2)  
-9. [Usage](#usage)  
+    3. [Pretrained GPT-2](#3-pretrained-gpt-2)
+9. [Installation](#installation)
+10. [Usage](#usage)  
     1. [Train a Model](#1-train-a-model)  
     2. [Evaluate Model Performance](#2-evaluate-model-performance)  
     3. [Generate Poems](#3-generate-poems)  
-10. [Installation](#installation)
 
 
 
@@ -669,6 +669,12 @@ When the sky is gone,
 
 The model leverages its prior knowledge of English to produce grammatically correct sentences from the very beginning, resulting in high spelling accuracy and strong lexical diversity early in training. The most notable improvements occur in structural coherence, particularly in the consistency of line lengths. Initially, the model tends to generate long paragraphs, but it progressively learns to compose shorter, more rhythmically balanced sentences arranged in stanzas that better reflect a poetic style. Although its evaluation metrics are similar to those of other models, its outputs display superior logical structure and a greater overall sense of coherence.
 
+
+## **Installation**
+
+`pip install -r requirements.txt` 
+
+
 ## Usage
 
 ### 1. Train a Model
@@ -732,8 +738,3 @@ Once a model is trained and saved, it is possible to generate new poems interact
 Outputs are saved to:
 
 `generated_text/` 
-
-
-## **Installation**
-
-`pip install -r requirements.txt` 
