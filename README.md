@@ -42,9 +42,9 @@ Welcome to my portfolio of **machine learning and data science projects**, devel
 
 ### NLP Projects
 
--   [Poetry Generator: Comparative Analysis of Neural Architectures](#poetry-generator-comparative-analysis-of-neural-architectures)
-    
 -   [Embedded Topic Model for Document Analysis](#embedded-topic-model-for-document-analysis)
+
+-   [Poetry Generator: Comparative Analysis of Neural Architectures](#poetry-generator-comparative-analysis-of-neural-architectures)
     
 
 ### Fundamental Deep Learning Projects
@@ -171,17 +171,17 @@ The `nlp` folder studies core ideas in natural language processing through both 
 
 ----------
 
-### Poetry Generator: Comparative Analysis of Neural Architectures
-
-This project explores **automatic poetry generation** by comparing **custom RNN/LSTM/GPT models** built and trained from scratch with a **fine-tuned GPT-2 (Hugging Face)** using selective unfreezing and parameter-efficient fine-tuning with LoRA. Implemented in PyTorch and trained on _Emily Dickinson’s_ _Poems: Three Series, Complete_, the work evaluates outputs with linguistic, structural, and semantic metrics (spelling accuracy, lexical diversity, n-gram overlap, ROUGE-L, and structure similarity). Experiments span character-level, BPE, and GPT-2 tokenization to quantify how encoding and architecture shape rhythm, style, and stanza form. The repository includes a **fully automated pipeline** for training, generation, and evaluation to support systematic experimentation in computational creativity.
-
-[Go to Poetry Generator: Comparative Analysis of Neural Architectures](./nlp/poetry_generator/README.md)
-
 ### Embedded Topic Model for Document Analysis
 
 This project implements the **Embedded Topic Model (ETM)**, which fuses traditional topic modeling with neural word embeddings by embedding both topics and words into the same semantic space. Built in PyTorch and evaluated on the 20 Newsgroups dataset, the model learns to represent documents as mixtures of embedded topics using variational inference. The project compares ETM against Latent Dirichlet Allocation (LDA), evaluating coherence, diversity, and perplexity across multiple vocabulary sizes. **Results confirm that ETM offers superior interpretability and richer semantic structure**, though it requires careful tuning to match LDA’s predictive reliability.
 
 [Go to Embedded Topic Model for Document Analysis](./nlp/embedded_topic_model/README.md)
+
+### Poetry Generator: Comparative Analysis of Neural Architectures
+
+This project explores **automatic poetry generation** by comparing **custom RNN/LSTM/GPT models** built and trained from scratch with a **fine-tuned GPT-2 (Hugging Face)** using selective unfreezing and parameter-efficient fine-tuning with LoRA. Implemented in PyTorch and trained on _Emily Dickinson’s_ _Poems: Three Series, Complete_, the work evaluates outputs with linguistic, structural, and semantic metrics (spelling accuracy, lexical diversity, n-gram overlap, ROUGE-L, and structure similarity). Experiments span character-level, BPE, and GPT-2 tokenization to quantify how encoding and architecture shape rhythm, style, and stanza form. The repository includes a **fully automated pipeline** for training, generation, and evaluation to support systematic experimentation in computational creativity.
+
+[Go to Poetry Generator: Comparative Analysis of Neural Architectures](./nlp/poetry_generator/README.md)
 
 ## Fundamental Deep Learning Projects
 
