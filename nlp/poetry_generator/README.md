@@ -51,7 +51,7 @@ The final outcome is a **fully automated pipeline for training, generating, and 
   <img src="figures/bests/len_best.png" alt="Len best" width="45%">
 </p>
 
-*Evolution of metrics during the training aff all best-performing model configurations.*
+*Evolution of metrics during the training of all best-performing model configurations.*
 
 
 | Architecture     | Spelling acc. | Diversity score | 2-gram overlap | 3-gram overlap | ROUGE-L score | Blank line frac. sim. | Lines length sim. |
