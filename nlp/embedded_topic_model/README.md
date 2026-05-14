@@ -2,7 +2,7 @@
 
 ## Description
 
-This project implements the Embedded Topic Model (ETM), a modern topic modeling approach that combines the probabilistic strengths of LDA with the representational power of neural word embeddings. ETM relies on a VAE‑based variational inference architecture, modeling documents as mixtures of topics with both words and topics embedded in the same semantic space. This enables the model to capture meaningful relationships between words, scale to large vocabularies, and improve interpretability.
+This project implements the Embedded Topic Model (ETM), a modern topic modeling approach that combines the probabilistic strengths of LDA with the representational power of neural word embeddings. ETM relies on a VAE‑based architecture, modeling documents as mixtures of topics with both words and topics embedded in the same semantic space. This enables the model to capture meaningful relationships between words, scale to large vocabularies, and improve interpretability.
 
 The codebase follows the structure and methods from the original ETM paper by Dieng et al. (2019) and includes functionality to preprocess text data, train the ETM model, and evaluate it against LDA using coherence, diversity, and perplexity metrics.
 
