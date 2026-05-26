@@ -57,21 +57,15 @@ Additionally, we explore how political structure evolves over time by applying M
 ## Methodology
 
 - **Similarity Function**:
-  $$
-  Sim(V_i,V_j)=\frac{V_i . V_j}{||V_i||||V_j||}
-  $$
+  
+  $Sim(V_i,V_j)=\frac{V_i . V_j}{||V_i||||V_j||}$
   - Only overlapping votes are considered
   - Abstentions and missing entries are excluded
 
 - **Classical MDS**:
-  - Eigen-decomposition:
-  $$
-  S = UDU^T
-  $$ where $S$ is the similarity matrix
+  - Eigen-decomposition: $S = UDU^T$ where $S$ is the similarity matrix
   - The 2D embedding is derived with:
-  $$
-  X=I_{2,n} D^{\frac{1}{2}}U^T
-  $$
+  $X=I_{2,n} D^{\frac{1}{2}}U^T$
 
 - **Temporal Analysis**:
   - Separate MDS projections computed for each legislative period
