@@ -1,4 +1,4 @@
-# Image Classification with a 1-layer network
+# Image Classification with a 1-Layer Neural Network
 
 ## Description
 
